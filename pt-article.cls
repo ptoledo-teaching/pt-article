@@ -135,7 +135,7 @@
 }
 \renewcommand*\l@section[2]{%
   \ifnum \c@tocdepth >\z@
-    \addvspace{6pt}{\bfseries \@dottedtocline{3}{0pt}{21pt}{#1}{#2}}
+    \addvspace{6pt}{\@dottedtocline{3}{0pt}{21pt}{\bfseries #1}{\bfseries #2}}
   \fi
 }
 \renewcommand{\subsection}{
