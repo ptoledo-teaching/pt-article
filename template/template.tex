@@ -1,0 +1,111 @@
+\documentclass[letterpaper]{pt-article}
+
+\selectlanguage{spanish}
+
+\logo{utfsm-inf}
+\title{Plantilla ejemplo para artículos}
+\titlesub{Departamento de Informática - UTFSM}
+\addauthor{Toledo Correa}{Pedro}{pedro.toledo@usm.cl}{Universidad Técnica Federico Santa María}
+
+\begin{document}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\templaterule
+
+\section{Introducción}
+
+Este es un ejemplo para utilizar la clase \texttt{pt-article} desarrollada por Pedro Toledo Correa para el uso de sus estudiantes o de quien quiera.
+
+Esta clase es simplemente una colección de formatos, macros y comandos que facilitan la escritura de artículos en \LaTeX dejando el documento ``lindo'' de acuerdo a lo que el autor considera ``lindo'', lo cual puede no ser lo que el resto del mundo considera ``lindo''. Este formato es una mezcla frankinsteniana de estilos que no cumplen ningún estandard conocido por el autor.
+
+\section{Listas}
+
+Las listas numeradas pueden llegar hasta cuatro niveles. Una lista numerada de 4 niveles ejemplo es la siguiente:
+
+\begin{enumerate}
+  \item Primer nivel
+  \item Primer nivel
+  \begin{enumerate}
+    \item Segundo nivel
+    \item Segundo nivel
+    \begin{enumerate}
+      \item Tercer nivel
+      \begin{enumerate}
+        \item Cuarto nivel
+      \end{enumerate}
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+
+Una lista no numerada de 6 niveles es la siguiente:
+
+\begin{itemize}
+ \item Primer nivel
+ \begin{itemize}
+  \item Segundo nivel
+  \begin{itemize}
+   \item Tercer nivel
+   \begin{itemize}
+    \item Cuarto nivel
+   \end{itemize}
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+
+Pasado el sexto nivel el comportamiento es el por omisión de la clase \texttt{article}.
+
+\section{Floats}
+
+\subsection{Figuras}
+
+La Figura~\ref{fig:dummy} que muestra el formato en que se presentan las figuras en este documento. Para esto está disponible el marco \texttt{ptfigure} que recibe los mismos argumentos que el marco \texttt{ptfigure} de la clase que facilita el proceso.
+
+\ptfigure{ht}{width=\columnwidth}{./images/jarjar}{Imagen ejemplo para el template}{dummy}
+
+\subsection{Tablas}
+
+Las tablas de este template se han desarrollado mediante el uso de \texttt{tabularray} que provee múltiples opciones para el desarrollo de tablas con estilos propios. Un ejemplo de uso se puede ver en la Tabla \ref{tab:example}.
+
+\begin{table}[hbt]
+  \begin{tblr}{colspec={|C{16pt}|X|R{16pt}|}}
+    \hline
+    \tableheader Id & Otro dato & \cellrotated{Un número} \\
+    \hline
+    \hline
+    \tablesubheader \SetCell[c=2]{l}{Un grupo} & & 10\\
+    \hline
+    1 & Primer dato & 3\\
+    \hline
+    2 & Segundo dato & 7\\
+    \hline
+    \tablesubheader \SetCell[c=2]{l}{Otro grupo} & & 17\\
+    \hline
+    3 & Primer dato & 5 \\
+    \hline
+    4 & Segundo dato & 12 \\
+    \hline
+    \hline
+    \tableheader \SetRow{r} \SetCell[c=2]{r}{Total} & & 27 \\
+    \hline
+  \end{tblr}
+  \caption{Ejemplo de tabla para el template}
+  \label{tab:example}
+\end{table}
+
+\section{Sección}
+Lorem ipsum dolor sit amet,\footnote{example foot note} consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+
+Lorem ipsum dolor sit amet,\footnote{example foot note} consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+
+\subsection{Sub-sección}
+Lorem ipsum dolor sit amet,\footnote{example foot note} consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+
+\subsubsection{Sub-sub-sección}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+
+\paragraph{Párrafo}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+
+\end{document}
