@@ -153,7 +153,7 @@
 % Sections formating
 \renewcommand{\section}{
   \@startsection{section}
-  {1}{\z@}{0.1in}{0.1in}{\normalfont\large\bfseries}%
+  {1}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\large\bfseries}%
 }
 \renewcommand*\l@section[2]{%
   \ifnum \c@tocdepth >\z@
@@ -162,18 +162,18 @@
 }
 \renewcommand{\subsection}{
   \@startsection{subsection}
-  {2}{\z@}{0.1in}{0.1in}{\normalfont\normalsize\bfseries}%
+  {2}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\bfseries}%
 }
 \renewcommand{\l@subsection}{\@dottedtocline{2}{0pt}{21pt}}
 \renewcommand{\subsubsection}{
   \@startsection{subsubsection}
-  {3}{\z@}{0.1in}{0.1in}{\normalfont\normalsize}%
+  {3}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize}%
 }
 \def\@seccntformat#1{\makebox[21pt][l]{\csname the#1\endcsname.}}
 \renewcommand{\l@subsubsection}{\@dottedtocline{3}{0pt}{21pt}}
 \renewcommand\paragraph{
   \@startsection{paragraph}
-  {4}{\z@}{0.1in}{0.1in}{\normalfont\normalsize\underline}%
+  {4}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\underline}%
 }
 
 % Caption formating
