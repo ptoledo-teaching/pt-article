@@ -27,6 +27,7 @@
 \RequirePackage{newtxsf} % Simbolos matemáticos en sand serif
 \RequirePackage{pgfplots}
 \RequirePackage{tabularray}
+\RequirePackage{tcolorbox}
 \RequirePackage{xcolor}
 
 % Class version
@@ -301,6 +302,20 @@
   ]
   \authorsfooter
   \renewcommand{\thefootnote}{\arabic{footnote}}
+}
+
+% Environments
+\newenvironment{highlightbox}{%
+  \begin{tcolorbox}[
+    width=\columnwidth,
+    colback=utfsmblue!14,
+    colframe=utfsmblue,
+    boxrule=0.4pt,
+    arc=3pt,
+    outer arc=3pt
+  ]
+}{
+  \end{tcolorbox}
 }
 
 % Hooks
