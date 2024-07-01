@@ -10,7 +10,6 @@
 \newcommand{\logo}[1]{\newcommand{\pta@logo}{#1}}
 
 % Packages
-% \RequirePackage{array}
 \RequirePackage[english,spanish]{babel}
 \RequirePackage{etoolbox}
 \RequirePackage{fancyhdr}
