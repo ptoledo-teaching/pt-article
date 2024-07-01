@@ -9,6 +9,9 @@
 \newcommand{\titlesub}[1]{\newcommand{\pta@titlesub}{#1}}
 \newcommand{\titlesubsub}[1]{\newcommand{\pta@titlesubsub}{#1}}
 \newcommand{\logo}[1]{\newcommand{\pta@logo}{#1}}
+\newcommand{\version}[1]{\newcommand{\pta@version}{#1}}
+\newcommand{\build}[1]{\newcommand{\pta@build}{#1}}
+\newcommand{\docversion}{v\pta@version}
 
 % Packages
 \RequirePackage[english,spanish]{babel}
