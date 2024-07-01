@@ -1,4 +1,4 @@
-\ProvidesClass{pt-article}[2021/03/01 v0.1 PT Article Class]
+\ProvidesClass{pt-article}[2021/07/01 v1.0 PT Article Class]
 \NeedsTeXFormat{LaTeX2e}
 
 % Load class
@@ -30,8 +30,8 @@
 \RequirePackage{xcolor}
 
 % Class version
-\def\ptaversionmajor{0}
-\def\ptaversionminor{1}
+\def\ptaversionmajor{1}
+\def\ptaversionminor{0}
 
 % Conditionals
 \newcommand{\ifvardefined}[3]{%
