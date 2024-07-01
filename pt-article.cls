@@ -51,10 +51,10 @@
 
 % Page format
 \geometry{
-  left=0.6in,
-  right=0.6in,
-  top=0.6in,
-  bottom=0.6in,
+  left=42pt,
+  right=42pt,
+  top=42pt,
+  bottom=42pt,
   includefoot
 }
 
