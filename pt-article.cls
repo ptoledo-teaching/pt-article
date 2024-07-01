@@ -48,6 +48,7 @@
 
 % Plot configuration
 \usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
 
 % Page format
 \geometry{
