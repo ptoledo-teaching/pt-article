@@ -293,5 +293,26 @@
   \maketitle
   \sloppy
 }
+\newcommand{\buildcountfile}{\jobname.buildcount}
+\AtBeginDocument{
+  \IfFileExists{\buildcountfile}{%
+    \newread\file
+    \openin\file=\buildcountfile
+    \read\file to\buildcount
+    \closein\file
+    \ifx\buildcount\empty
+      \def\buildcount{0}
+    \fi
+  }{
+    \def\buildcount{0}
+  }
+}
+\AtEndDocument{
+  \newwrite\file
+  \immediate\openout\file=\buildcountfile
+  \edef\next{\number\numexpr\buildcount+1\relax}
+  \immediate\write\file{\next}
+  \immediate\closeout\file
+}
 
 \endinput
