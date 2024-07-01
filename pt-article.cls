@@ -39,6 +39,10 @@
   \fi
 }
 
+% Date format
+\newcommand{\todayymd}{\the\year/\twodigits\month/\twodigits\day}
+\newcommand{\twodigits}[1]{\ifnum#1<10 0\fi\the#1}
+
 % Plot configuration
 \usepgfplotslibrary{groupplots}
 
