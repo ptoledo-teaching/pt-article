@@ -21,6 +21,7 @@
 \RequirePackage{hyperref}
 \RequirePackage{microtype}
 \RequirePackage{newtxsf} % Simbolos matemáticos en sand serif
+\RequirePackage{pgfplots}
 \RequirePackage{tabularray}
 \RequirePackage{xcolor}
 
@@ -36,6 +37,9 @@
     #3%
   \fi
 }
+
+% Plot configuration
+\usepgfplotslibrary{groupplots}
 
 % Page format
 \geometry{
