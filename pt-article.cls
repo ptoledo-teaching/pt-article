@@ -99,10 +99,10 @@
 }
 
 % Footnotes rule (deleted by ftnright)
-\renewcommand\footnoterule{%
-  \vfill
-  \hrule \@width 0.5\columnwidth \@height 0.4pt \@depth \z@
-  \kern 2.7\p@
+\renewcommand\footnoterule{
+  \kern 3pt
+  \hrule \@width 126pt
+  \kern 3pt
 }
 
 % Header and footer
