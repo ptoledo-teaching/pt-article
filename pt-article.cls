@@ -7,6 +7,7 @@
 % Class parameters
 \renewcommand{\title}[1]{\newcommand{\pta@title}{#1}}
 \newcommand{\titlesub}[1]{\newcommand{\pta@titlesub}{#1}}
+\newcommand{\titlesubsub}[1]{\newcommand{\pta@titlesubsub}{#1}}
 \newcommand{\logo}[1]{\newcommand{\pta@logo}{#1}}
 
 % Packages
@@ -263,26 +264,21 @@
 % Title
 \renewcommand{\maketitle}{
   \renewcommand{\thefootnote}{\alph{footnote}}
-  \twocolumn[
-    \begin{@twocolumnfalse}
-      \ifvardefined{pta@logo}{
-        \noindent\includegraphics[height=30pt]{\pta@logo}
-        \vspace{12pt}
-      }{}
-      \begin{center}
-        \vspace{7pt}
-        {\Huge\pta@title}\\
-        \ifvardefined{pta@titlesub}{%
-          \vspace{7pt}
-          {\LARGE\pta@titlesub}
-        }{}\\
-        \ifnum\value{authorindex}>0
-          \vspace{12pt}
-          \authorstitle
-        \fi
-      \end{center}
-      \vspace{35pt}
-    \end{@twocolumnfalse}
+  \twocolumn[%
+    \begin{@twocolumnfalse}%
+      \ifvardefined{pta@logo}{\noindent\includegraphics[height=30pt]{\pta@logo}\vspace{14pt}}{}%
+      \begin{center}%
+        \vspace{6pt}%
+        {\Huge\pta@title}\\%
+        \ifvardefined{pta@titlesub}{\vspace{6pt}{\LARGE\pta@titlesub}\\}{}%
+        \ifvardefined{pta@titlesubsub}{\vspace{2pt}{\large\pta@titlesubsub}\\}{}%
+        \ifnum\value{authorindex}>0%
+          \vspace{12pt}%
+          \authorstitle%
+        \fi%
+      \end{center}%
+      \vspace{21pt}%
+    \end{@twocolumnfalse}%
   ]
   \authorsfooter
   \renewcommand{\thefootnote}{\arabic{footnote}}
