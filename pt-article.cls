@@ -112,7 +112,18 @@
 \chead{}
 \rhead{}
 \lfoot{}
-\cfoot{\thepage}%/\thetotalpages}
+\cfoot{
+  \thepage%
+  {%
+    \color{utfsmblue!21}
+    \ifvardefined{pta@version}{\\v\pta@version}{}%
+    \ifvardefined{pta@build}{%
+      \ifvardefined{pta@version}{.}{\\B}\ifdefstring{\pta@build}{auto}{\buildcount}{\pta@build}- \todayymd
+    }{%
+      \ifvardefined{pta@version}{\ - \todayymd}{}%
+    }%
+  }%
+}
 \rfoot{}
 
 % Lists spacing
