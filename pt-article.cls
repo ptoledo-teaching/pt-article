@@ -329,4 +329,7 @@
   \immediate\closeout\file
 }
 
+% Vertical spacing to fill columns
+\flushbottom
+
 \endinput
