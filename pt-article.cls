@@ -24,11 +24,11 @@
 \RequirePackage{tabularray}
 \RequirePackage{xcolor}
 
-% Version
+% Class version
 \def\ptaversionmajor{0}
 \def\ptaversionminor{1}
 
-% Confitional printing
+% Conditionals
 \newcommand{\ifvardefined}[3]{%
   \ifcsname#1\endcsname%
     #2%
