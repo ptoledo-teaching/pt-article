@@ -11,10 +11,12 @@
 \newcommand{\logo}[1]{\newcommand{\pta@logo}{#1}}
 \newcommand{\version}[1]{\newcommand{\pta@version}{#1}}
 \newcommand{\build}[1]{\newcommand{\pta@build}{#1}}
+\newcommand{\watermark}[1]{\newcommand{\pta@watermark}{#1}}
 \newcommand{\docversion}{v\pta@version}
 
 % Packages
 \RequirePackage[english,spanish]{babel}
+\RequirePackage[stamp=false]{draftwatermark}
 \RequirePackage{etoolbox}
 \RequirePackage{fancyhdr}
 \RequirePackage[sfdefault,scaled=.85]{FiraSans}
@@ -71,6 +73,13 @@
 \definecolor{utfsmblue}{RGB}{0,75,133}
 \definecolor{utfsmgreen}{RGB}{0,132,82}
 \definecolor{utfsmyellow}{RGB}{247,174,0}
+
+% Watermark format
+\DraftwatermarkOptions{
+  angle=45,
+  color=utfsmred!21,
+  fontsize=84pt
+}
 
 % Babel translations
 % \renewcommand{\contentsname}{}
@@ -291,7 +300,7 @@
         \vspace{6pt}%
         {\Huge\pta@title}\\%
         \ifvardefined{pta@titlesub}{\vspace{6pt}{\LARGE\pta@titlesub}\\}{}%
-        \ifvardefined{pta@titlesubsub}{\vspace{2pt}{\large\pta@titlesubsub}\\}{}%
+        \ifvardefined{pta@titlesubsub}{\vspace{2pt}\ifvardefined{pta@watermark}{\pta@watermark\ - }{}{\large\pta@titlesubsub}\\}{}%
         \ifnum\value{authorindex}>0%
           \vspace{12pt}%
           \authorstitle%
@@ -320,6 +329,10 @@
 
 % Hooks
 \AfterEndPreamble{
+  \ifvardefined{pta@watermark}{%
+    \DraftwatermarkOptions{stamp=true}
+    \SetWatermarkText{\pta@watermark\ifvardefined{pta@version}{\ - v\pta@version\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{.\buildcount}{.\pta@build}}{}}{\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{\ - B\buildcount}{\ - B\pta@build}}{}}}
+  }{}
   \maketitle
   \sloppy
 }
