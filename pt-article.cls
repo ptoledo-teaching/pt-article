@@ -15,6 +15,7 @@
 \newcommand{\docversion}{v\pta@version}
 
 % Packages
+\RequirePackage[hyphens]{url}
 \RequirePackage[english,spanish]{babel}
 \RequirePackage{bookmark}
 \RequirePackage[stamp=false]{draftwatermark}
