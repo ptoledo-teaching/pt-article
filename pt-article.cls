@@ -302,7 +302,7 @@
         \vspace{6pt}%
         {\Huge\pta@title}\\%
         \ifvardefined{pta@titlesub}{\vspace{6pt}{\LARGE\pta@titlesub}\\}{}%
-        \ifvardefined{pta@titlesubsub}{\vspace{2pt}\ifvardefined{pta@watermark}{\pta@watermark\ - }{}{\large\pta@titlesubsub}\\}{}%
+				\ifvardefined{pta@titlesubsub}{\vspace{6pt}\ifvardefined{pta@watermark}{\pta@watermark\ - }{}{\pta@titlesubsub}\\}{}%
         \ifnum\value{authorindex}>0%
           \vspace{12pt}%
           \authorstitle%
