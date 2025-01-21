@@ -16,6 +16,7 @@
 
 % Packages
 \RequirePackage[english,spanish]{babel}
+\RequirePackage{bookmark}
 \RequirePackage[stamp=false]{draftwatermark}
 \RequirePackage{etoolbox}
 \RequirePackage{fancyhdr}
