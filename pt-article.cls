@@ -338,7 +338,13 @@
   \maketitle
   \sloppy
 }
-\newcommand{\buildcountfile}{\jobname.buildcount}
+\newcommand{\buildcountfile}{
+	\ifvardefined{pta@version}{
+		\jobname\pta@version.buildcount
+	}{
+		\jobname.buildcount
+	}
+}
 \AtBeginDocument{
   \IfFileExists{\buildcountfile}{%
     \newread\file
