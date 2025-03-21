@@ -148,10 +148,10 @@
 \def\@listiv{}
 
 % Numbered list label styles
-\def\labelenumi{\theenumi.}     
-\def\labelenumii{\theenumii.}   
-\def\labelenumiii{\theenumiii.} 
-\def\labelenumiv{\theenumiv.}   
+\def\labelenumi{\theenumi.}
+\def\labelenumii{\theenumii.}
+\def\labelenumiii{\theenumiii.}
+\def\labelenumiv{\theenumiv.}
 
 \def\theenumi{\arabic{enumi}}
 \def\theenumii{\arabic{enumii}}
@@ -257,11 +257,11 @@
 	showstringspaces=false,
 }
 \lstdefinestyle{print}{
-    basicstyle=\color{black}\small\ttfamily,
-    keywordstyle=\color{black},
-    commentstyle=\color{black},
-    stringstyle=\color{black},
-    identifierstyle=\color{black}
+	basicstyle=\color{black}\small\ttfamily,
+	keywordstyle=\color{black},
+	commentstyle=\color{black},
+	stringstyle=\color{black},
+	identifierstyle=\color{black}
 }
 
 % Rule
@@ -300,26 +300,26 @@
 	\loop
 	\ifnum\count1<\numexpr\value{authorindex}+1\relax
 	\begin{minipage}{\minipagelength}
-			\centering
-			\if\relax\csname authordetails\the\count1\endcsname\relax
-				\csname authornames\the\count1\endcsname\\
-			\else
-				\csname authornames\the\count1\endcsname\footnotemark[\the\count1]\\
-			\fi
-			\csname authoremails\the\count1\endcsname
+		\centering
+		\if\relax\csname authordetails\the\count1\endcsname\relax
+			\csname authornames\the\count1\endcsname\\
+		\else
+			\csname authornames\the\count1\endcsname\footnotemark[\the\count1]\\
+		\fi
+		\csname authoremails\the\count1\endcsname
 	\end{minipage}
-			\advance\count1 by 1
+	\advance\count1 by 1
 	\repeat
 }
 \newcommand{\authorsfooter}{
 	\count1=1
 	\loop
 	\ifnum\count1<\numexpr\value{authorindex}+1\relax
-		\if\relax\csname authordetails\the\count1\endcsname\relax
-		\else
-			\footnotetext[\the\count1]{\csname authordetails\the\count1\endcsname}
-		\fi
-		\advance\count1 by 1
+	\if\relax\csname authordetails\the\count1\endcsname\relax
+	\else
+		\footnotetext[\the\count1]{\csname authordetails\the\count1\endcsname}
+	\fi
+	\advance\count1 by 1
 	\repeat
 }
 
@@ -349,8 +349,8 @@
 				\ifvardefined{pta@titlesub}{\vspace{6pt}{\LARGE\pta@titlesub}\\}{}%
 				\ifvardefined{pta@titlesubsub}{\vspace{6pt}\ifvardefined{pta@watermark}{\pta@watermark\ - }{}{\pta@titlesubsub}\\}{}%
 				\ifnum\value{authorindex}>0%
-					\vspace{12pt}%
-					\authorstitle%
+				\vspace{12pt}%
+				\authorstitle%
 				\fi%
 			\end{center}%
 			\vspace{21pt}%
@@ -363,14 +363,14 @@
 % Environments
 \newenvironment{highlightbox}{%
 	\begin{tcolorbox}[
-		width=\columnwidth,
-		colback=utfsmblue!14,
-		colframe=utfsmblue,
-		boxrule=0.4pt,
-		arc=3pt,
-		outer arc=3pt
-	]
-}{
+			width=\columnwidth,
+			colback=utfsmblue!14,
+			colframe=utfsmblue,
+			boxrule=0.4pt,
+			arc=3pt,
+			outer arc=3pt
+		]
+		}{
 	\end{tcolorbox}
 }
 
