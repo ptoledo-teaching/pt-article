@@ -323,6 +323,20 @@
 	\repeat
 }
 
+\newcommand{\ptgrid}[3]{
+	\begin{center}
+		\begin{tikzpicture}
+			\def\nrows{#3}
+			\def\ncols{#2}
+			\foreach \x in {0,...,\numexpr\ncols-1\relax} {
+					\foreach \y in {0,...,\numexpr\nrows-1\relax} {
+							\draw[thick] (\x*#1, \y*#1) rectangle (\x*#1+#1, \y*#1+#1);
+						}
+				}
+		\end{tikzpicture}
+	\end{center}
+}
+
 % Title
 \renewcommand{\maketitle}{
 	\renewcommand{\thefootnote}{\alph{footnote}}
