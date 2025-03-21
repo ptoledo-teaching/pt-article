@@ -27,6 +27,7 @@
 \RequirePackage{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
+\RequirePackage{listings}
 \RequirePackage{microtype}
 \RequirePackage{newtxsf} % Simbolos matemáticos en sand serif
 \RequirePackage{pgfplots}
@@ -231,6 +232,36 @@
 		\caption{#4}
 		\label{fig:#5}
 	\end{figure}
+}
+
+% Listings
+\lstset{
+	basicstyle=\small\ttfamily,
+	backgroundcolor=\color{gray!10},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	rulecolor=\color{gray},
+	frame=single,
+	framerule=0pt,
+	framesep=2pt,
+	captionpos=b,
+	aboveskip=10pt,
+	belowskip=5pt,
+	columns=fullflexible,
+	keepspaces=true,
+	numberstyle=\color{black},
+	numbers=left,
+	stepnumber=1,
+	numbersep=5pt,
+	showstringspaces=false,
+}
+\lstdefinestyle{print}{
+    basicstyle=\color{black}\small\ttfamily,
+    keywordstyle=\color{black},
+    commentstyle=\color{black},
+    stringstyle=\color{black},
+    identifierstyle=\color{black}
 }
 
 % Rule
