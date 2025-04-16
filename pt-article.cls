@@ -41,11 +41,11 @@
 
 % Conditionals
 \newcommand{\ifvardefined}[3]{%
-	\ifcsname#1\endcsname%
-		#2%
-	\else%
-		#3%
-	\fi
+    \ifcsname#1\endcsname%
+        #2%
+    \else%
+        #3%
+    \fi
 }
 
 % Date format
@@ -58,11 +58,11 @@
 
 % Page format
 \geometry{
-	left=42pt,
-	right=42pt,
-	top=42pt,
-	bottom=42pt,
-	includefoot
+    left=42pt,
+    right=42pt,
+    top=42pt,
+    bottom=42pt,
+    includefoot
 }
 
 % Column separation
@@ -79,9 +79,9 @@
 
 % Watermark format
 \DraftwatermarkOptions{
-	angle=45,
-	color=utfsmred!21,
-	fontsize=84pt
+    angle=45,
+    color=utfsmred!21,
+    fontsize=84pt
 }
 
 % Babel translations
@@ -101,22 +101,22 @@
 \addto\captionsenglish{
 }
 \addto\captionsspanish{
-	\renewcommand{\tablename}{Tabla}
-	\renewcommand{\listtablename}{Índice de tablas}
+    \renewcommand{\tablename}{Tabla}
+    \renewcommand{\listtablename}{Índice de tablas}
 }
 
 % Links format
 \hypersetup{
-	colorlinks,
-	linkcolor=utfsmblue,
-	urlcolor=utfsmblue
+    colorlinks,
+    linkcolor=utfsmblue,
+    urlcolor=utfsmblue
 }
 
 % Footnotes rule (deleted by ftnright)
 \renewcommand\footnoterule{
-	\kern 3pt
-	\hrule \@width 126pt
-	\kern 3pt
+    \kern 3pt
+    \hrule \@width 126pt
+    \kern 3pt
 }
 
 % Header and footer
@@ -127,16 +127,16 @@
 \rhead{}
 \lfoot{}
 \cfoot{
-	\thepage%
-	{%
-		\color{utfsmblue!21}
-		\ifvardefined{pta@version}{\\v\pta@version}{}%
-		\ifvardefined{pta@build}{%
-			\ifvardefined{pta@version}{.}{\\B}\ifdefstring{\pta@build}{auto}{\buildcount}{\pta@build}- \todayymd
-		}{%
-			\ifvardefined{pta@version}{\ - \todayymd}{}%
-		}%
-	}%
+    \thepage%
+    {%
+        \color{utfsmblue!21}
+        \ifvardefined{pta@version}{\\v\pta@version}{}%
+        \ifvardefined{pta@build}{%
+            \ifvardefined{pta@version}{.}{\\B}\ifdefstring{\pta@build}{auto}{\buildcount}{\pta@build}- \todayymd
+        }{%
+            \ifvardefined{pta@version}{\ - \todayymd}{}%
+        }%
+    }%
 }
 \rfoot{}
 
@@ -166,37 +166,37 @@
 
 % Sections formating
 \renewcommand{\section}{
-	\@startsection{section}
-	{1}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\large\bfseries}%
+    \@startsection{section}
+    {1}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\large\bfseries}%
 }
 \renewcommand*\l@section[2]{%
-	\ifnum \c@tocdepth >\z@
-		\addvspace{6pt}{\@dottedtocline{3}{0pt}{21pt}{\bfseries #1}{\bfseries #2}}
-	\fi
+    \ifnum \c@tocdepth >\z@
+        \addvspace{6pt}{\@dottedtocline{3}{0pt}{21pt}{\bfseries #1}{\bfseries #2}}
+    \fi
 }
 \renewcommand{\subsection}{
-	\@startsection{subsection}
-	{2}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\bfseries}%
+    \@startsection{subsection}
+    {2}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\bfseries}%
 }
 \renewcommand{\l@subsection}{\@dottedtocline{2}{0pt}{21pt}}
 \renewcommand{\subsubsection}{
-	\@startsection{subsubsection}
-	{3}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize}%
+    \@startsection{subsubsection}
+    {3}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize}%
 }
 \def\@seccntformat#1{\makebox[21pt][l]{\csname the#1\endcsname.}}
 \renewcommand{\l@subsubsection}{\@dottedtocline{3}{0pt}{21pt}}
 \renewcommand\paragraph{
-	\@startsection{paragraph}
-	{4}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\underline}%
+    \@startsection{paragraph}
+    {4}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\underline}%
 }
 
 % Caption formating
 \setlength{\abovecaptionskip}{5pt}
 \def\@makecaption#1#2{
-	\vskip\abovecaptionskip
-	\footnotesize
-	\textbf{#1:} #2
-	\vskip\belowcaptionskip
+    \vskip\abovecaptionskip
+    \footnotesize
+    \textbf{#1:} #2
+    \vskip\belowcaptionskip
 }
 
 % Tables styling
@@ -211,64 +211,64 @@
 \NewColumnType{C}[1]{Q[c,t,wd=#1]}
 \NewColumnType{R}[1]{Q[r,t,wd=#1]}
 \NewTableCommand\tableheader{
-	\SetRow{
-		utfsmblue!42,
-		c,
-		font=\bfseries
-	}
+    \SetRow{
+        utfsmblue!42,
+        c,
+        font=\bfseries
+    }
 }
 \NewTableCommand\tablesubheader{
-	\SetRow{
-		utfsmblue!21
-	}
+    \SetRow{
+        utfsmblue!21
+    }
 }
 
 % Figures
 \renewcommand*\l@figure{\@dottedtocline{1}{0pt}{21pt}}
 \newcommand{\ptfigure}[5]{
-	\begin{figure}[#1]
-		\centering
-		\includegraphics[#2]{#3}
-		\caption{#4}
-		\label{fig:#5}
-	\end{figure}
+    \begin{figure}[#1]
+        \centering
+        \includegraphics[#2]{#3}
+        \caption{#4}
+        \label{fig:#5}
+    \end{figure}
 }
 
 % Listings
 \lstset{
-	basicstyle=\small\ttfamily,
-	backgroundcolor=\color{gray!10},
-	keywordstyle=\color{blue},
-	commentstyle=\color{green!40!black},
-	stringstyle=\color{red},
-	rulecolor=\color{gray},
-	frame=single,
-	framerule=0pt,
-	framesep=2pt,
-	captionpos=b,
-	aboveskip=10pt,
-	belowskip=5pt,
-	columns=fullflexible,
-	keepspaces=true,
-	numberstyle=\color{black},
-	numbers=left,
-	stepnumber=1,
-	numbersep=5pt,
-	showstringspaces=false,
+    basicstyle=\small\ttfamily,
+    backgroundcolor=\color{gray!10},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!40!black},
+    stringstyle=\color{red},
+    rulecolor=\color{gray},
+    frame=single,
+    framerule=0pt,
+    framesep=2pt,
+    captionpos=b,
+    aboveskip=10pt,
+    belowskip=5pt,
+    columns=fullflexible,
+    keepspaces=true,
+    numberstyle=\color{black},
+    numbers=left,
+    stepnumber=1,
+    numbersep=5pt,
+    showstringspaces=false,
 }
 \lstdefinestyle{print}{
-	basicstyle=\color{black}\small\ttfamily,
-	keywordstyle=\color{black},
-	commentstyle=\color{black},
-	stringstyle=\color{black},
-	identifierstyle=\color{black}
+    basicstyle=\color{black}\small\ttfamily,
+    keywordstyle=\color{black},
+    commentstyle=\color{black},
+    stringstyle=\color{black},
+    identifierstyle=\color{black}
 }
 
 % Rule
 \newcommand{\templaterule}{
-	\vspace{6pt}
-	\noindent\hfill\rule{0.42\columnwidth}{0.4pt}\hfill
-	\vspace{2pt}
+    \vspace{6pt}
+    \noindent\hfill\rule{0.42\columnwidth}{0.4pt}\hfill
+    \vspace{2pt}
 }
 
 % Command to add an author
@@ -281,46 +281,46 @@
 \newcommand\authoremailentry[1]{\href{mailto:#1}{#1}}
 \newcommand\authordetailentry[1]{#1}
 \newcommand\addauthor[4]{%
-	\stepcounter{authorindex}%
-	\expandafter\def\csname authornames\theauthorindex\endcsname{\authornameentry{#1}{#2}}
-	\expandafter\def\csname authoremails\theauthorindex\endcsname{\authoremailentry{#3}}
-	\expandafter\def\csname authordetails\theauthorindex\endcsname{\authordetailentry{#4}}
-	\settowidth{\lengthname}{#1, #2\textsuperscript{\alph{authorindex}}}%
-	\settowidth{\lengthmail}{#3}%
-	\ifdim\lengthname>\minipagelength
-		\setlength{\minipagelength}{\lengthname}%
-	\fi
-	\ifdim\lengthmail>\minipagelength
-		\setlength{\minipagelength}{\lengthmail}%
-	\fi
+    \stepcounter{authorindex}%
+    \expandafter\def\csname authornames\theauthorindex\endcsname{\authornameentry{#1}{#2}}
+    \expandafter\def\csname authoremails\theauthorindex\endcsname{\authoremailentry{#3}}
+    \expandafter\def\csname authordetails\theauthorindex\endcsname{\authordetailentry{#4}}
+    \settowidth{\lengthname}{#1, #2\textsuperscript{\alph{authorindex}}}%
+    \settowidth{\lengthmail}{#3}%
+    \ifdim\lengthname>\minipagelength
+        \setlength{\minipagelength}{\lengthname}%
+    \fi
+    \ifdim\lengthmail>\minipagelength
+        \setlength{\minipagelength}{\lengthmail}%
+    \fi
 }
 \newcommand{\authorstitle}{
-	\addtolength{\minipagelength}{3pt}
-	\count1=1
-	\loop
-	\ifnum\count1<\numexpr\value{authorindex}+1\relax
-	\begin{minipage}{\minipagelength}
-		\centering
-		\if\relax\csname authordetails\the\count1\endcsname\relax
-			\csname authornames\the\count1\endcsname\\
-		\else
-			\csname authornames\the\count1\endcsname\footnotemark[\the\count1]\\
-		\fi
-		\csname authoremails\the\count1\endcsname
-	\end{minipage}
-	\advance\count1 by 1
-	\repeat
+    \addtolength{\minipagelength}{3pt}
+    \count1=1
+    \loop
+    \ifnum\count1<\numexpr\value{authorindex}+1\relax
+    \begin{minipage}{\minipagelength}
+        \centering
+        \if\relax\csname authordetails\the\count1\endcsname\relax
+            \csname authornames\the\count1\endcsname\\
+        \else
+            \csname authornames\the\count1\endcsname\footnotemark[\the\count1]\\
+        \fi
+        \csname authoremails\the\count1\endcsname
+    \end{minipage}
+    \advance\count1 by 1
+    \repeat
 }
 \newcommand{\authorsfooter}{
-	\count1=1
-	\loop
-	\ifnum\count1<\numexpr\value{authorindex}+1\relax
-	\if\relax\csname authordetails\the\count1\endcsname\relax
-	\else
-		\footnotetext[\the\count1]{\csname authordetails\the\count1\endcsname}
-	\fi
-	\advance\count1 by 1
-	\repeat
+    \count1=1
+    \loop
+    \ifnum\count1<\numexpr\value{authorindex}+1\relax
+    \if\relax\csname authordetails\the\count1\endcsname\relax
+    \else
+        \footnotetext[\the\count1]{\csname authordetails\the\count1\endcsname}
+    \fi
+    \advance\count1 by 1
+    \repeat
 }
 
 \newcommand{\ptgrid}[4]{
@@ -362,76 +362,76 @@
 
 % Title
 \renewcommand{\maketitle}{
-	\renewcommand{\thefootnote}{\alph{footnote}}
-	\twocolumn[%
-		\begin{@twocolumnfalse}%
-			\ifvardefined{pta@logo}{\noindent\includegraphics[height=30pt]{\pta@logo}\vspace{14pt}}{}%
-			\begin{center}%
-				\vspace{6pt}%
-				{\Huge\pta@title}\\%
-				\ifvardefined{pta@titlesub}{\vspace{6pt}{\LARGE\pta@titlesub}\\}{}%
-				\ifvardefined{pta@titlesubsub}{\vspace{6pt}\ifvardefined{pta@watermark}{\pta@watermark\ - }{}{\pta@titlesubsub}\\}{}%
-				\ifnum\value{authorindex}>0%
-				\vspace{12pt}%
-				\authorstitle%
-				\fi%
-			\end{center}%
-			\vspace{21pt}%
-		\end{@twocolumnfalse}%
-	]
-	\authorsfooter
-	\renewcommand{\thefootnote}{\arabic{footnote}}
+    \renewcommand{\thefootnote}{\alph{footnote}}
+    \twocolumn[%
+        \begin{@twocolumnfalse}%
+            \ifvardefined{pta@logo}{\noindent\includegraphics[height=30pt]{\pta@logo}\vspace{14pt}}{}%
+            \begin{center}%
+                \vspace{6pt}%
+                {\Huge\pta@title}\\%
+                \ifvardefined{pta@titlesub}{\vspace{6pt}{\LARGE\pta@titlesub}\\}{}%
+                \ifvardefined{pta@titlesubsub}{\vspace{6pt}\ifvardefined{pta@watermark}{\pta@watermark\ - }{}{\pta@titlesubsub}\\}{}%
+                \ifnum\value{authorindex}>0%
+                \vspace{12pt}%
+                \authorstitle%
+                \fi%
+            \end{center}%
+            \vspace{21pt}%
+        \end{@twocolumnfalse}%
+    ]
+    \authorsfooter
+    \renewcommand{\thefootnote}{\arabic{footnote}}
 }
 
 % Environments
 \newenvironment{highlightbox}{%
-	\begin{tcolorbox}[
-			width=\columnwidth,
-			colback=utfsmblue!14,
-			colframe=utfsmblue,
-			boxrule=0.4pt,
-			arc=3pt,
-			outer arc=3pt
-		]
-		}{
-	\end{tcolorbox}
+    \begin{tcolorbox}[
+            width=\columnwidth,
+            colback=utfsmblue!14,
+            colframe=utfsmblue,
+            boxrule=0.4pt,
+            arc=3pt,
+            outer arc=3pt
+        ]
+        }{
+    \end{tcolorbox}
 }
 
 % Hooks
 \AfterEndPreamble{
-	\ifvardefined{pta@watermark}{%
-		\DraftwatermarkOptions{stamp=true}
-		\SetWatermarkText{\pta@watermark\ifvardefined{pta@version}{\ - v\pta@version\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{.\buildcount}{.\pta@build}}{}}{\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{\ - B\buildcount}{\ - B\pta@build}}{}}}
-	}{}
-	\maketitle
-	\sloppy
+    \ifvardefined{pta@watermark}{%
+        \DraftwatermarkOptions{stamp=true}
+        \SetWatermarkText{\pta@watermark\ifvardefined{pta@version}{\ - v\pta@version\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{.\buildcount}{.\pta@build}}{}}{\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{\ - B\buildcount}{\ - B\pta@build}}{}}}
+    }{}
+    \maketitle
+    \sloppy
 }
 \newcommand{\buildcountfile}{
-	\ifvardefined{pta@version}{
-		\jobname\pta@version.buildcount
-	}{
-		\jobname.buildcount
-	}
+    \ifvardefined{pta@version}{
+        \jobname\pta@version.buildcount
+    }{
+        \jobname.buildcount
+    }
 }
 \AtBeginDocument{
-	\IfFileExists{\buildcountfile}{%
-		\newread\file
-		\openin\file=\buildcountfile
-		\read\file to\buildcount
-		\closein\file
-		\ifx\buildcount\empty
-			\def\buildcount{0}
-		\fi
-	}{
-		\def\buildcount{0}
-	}
+    \IfFileExists{\buildcountfile}{%
+        \newread\file
+        \openin\file=\buildcountfile
+        \read\file to\buildcount
+        \closein\file
+        \ifx\buildcount\empty
+            \def\buildcount{0}
+        \fi
+    }{
+        \def\buildcount{0}
+    }
 }
 \AtEndDocument{
-	\newwrite\file
-	\immediate\openout\file=\buildcountfile
-	\edef\next{\number\numexpr\buildcount+1\relax}
-	\immediate\write\file{\next}
-	\immediate\closeout\file
+    \newwrite\file
+    \immediate\openout\file=\buildcountfile
+    \edef\next{\number\numexpr\buildcount+1\relax}
+    \immediate\write\file{\next}
+    \immediate\closeout\file
 }
 
 % Vertical spacing to fill columns
