@@ -323,18 +323,41 @@
 	\repeat
 }
 
-\newcommand{\ptgrid}[3]{
-	\begin{center}
-		\begin{tikzpicture}
-			\def\nrows{#3}
-			\def\ncols{#2}
-			\foreach \x in {0,...,\numexpr\ncols-1\relax} {
-					\foreach \y in {0,...,\numexpr\nrows-1\relax} {
-							\draw[thick] (\x*#1, \y*#1) rectangle (\x*#1+#1, \y*#1+#1);
-						}
-				}
-		\end{tikzpicture}
-	\end{center}
+\newcommand{\ptgrid}[4]{
+    \begin{center}
+        \begin{tikzpicture}
+            \def\nrows{#4}
+            \def\ncols{#3}
+            \foreach \x in {0,...,\numexpr\ncols-1\relax} {
+                    \foreach \y in {0,...,\numexpr\nrows-1\relax} {
+                            \draw[thick] (\x*#1, \y*#2) rectangle (\x*#1+#1, \y*#2+#2);
+                        }
+                }
+        \end{tikzpicture}
+    \end{center}
+}
+
+\newcommand{\ptgridindent}[4]{
+    \begin{center}
+        \begin{tikzpicture}
+            \def\nrows{#4}
+            \def\ncols{#3}
+            \foreach \x in {0,...,\numexpr\ncols-1\relax} {
+                    \foreach \y in {0,...,\numexpr\nrows-1\relax} {
+                            \draw[very thin, dashed] (\x*#1, \y*#2) -- (\x*#1, \y*#2+#2); % Vertical dashed lines (even slimmer)
+                            \draw[thick] (\x*#1, \y*#2) -- (\x*#1+#1, \y*#2); % Horizontal solid lines
+                        }
+                }
+            % Add the right border
+            \foreach \y in {0,...,\numexpr\nrows-1\relax} {
+                    \draw[very thin, dashed] (\ncols*#1, \y*#2) -- (\ncols*#1, \y*#2+#2); % Right vertical dashed line (even slimmer)
+                }
+            % Add the top border
+            \foreach \x in {0,...,\numexpr\ncols-1\relax} {
+                    \draw[thick] (\x*#1, \nrows*#2) -- (\x*#1+#1, \nrows*#2); % Top horizontal solid line
+                }
+        \end{tikzpicture}
+    \end{center}
 }
 
 % Title
