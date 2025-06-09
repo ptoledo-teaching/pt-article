@@ -137,13 +137,13 @@
 
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \AfterEndPreamble{
     \ifvardefined{pta@watermark}{%
         \DraftwatermarkOptions{stamp=true}
         \SetWatermarkText{\pta@watermark\ifvardefined{pta@version}{\ - v\pta@version\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{.\buildcount}{.\pta@build}}{}}{\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{\ - B\buildcount}{\ - B\pta@build}}{}}}
     }{}
     \maketitle
-    % 
 }
 
 \endinput
