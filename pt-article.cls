@@ -17,6 +17,8 @@
 
 % Page and text formatting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Font sizing
+\RequirePackage{microtype}
 % Page size
 \geometry{
     left=42pt,
