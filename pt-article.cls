@@ -64,6 +64,8 @@
     \@startsection{paragraph}
     {4}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\underline}%
 }
+\RequirePackage{flushend}
+\flushbottom
 
 % Header and footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -94,8 +96,6 @@
     \hrule \@width 126pt
     \kern 3pt
 }
-% Balance columns
-\flushbottom
 
 % Elements %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
