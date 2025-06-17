@@ -78,13 +78,7 @@
 \cfoot{
     \thepage%
     {%
-        \color{utfsmblue!21}
-        \ifvardefined{pt@version}{\\v\pt@version}{}%
-        \ifvardefined{pt@build}{%
-            \ifvardefined{pt@version}{.}{\\B}\ifdefstring{\pt@build}{auto}{\buildcount}{\pt@build}- \todayymd
-        }{%
-            \ifvardefined{pt@version}{\ - \todayymd}{}%
-        }%
+        \color{ptblue!21}
     }%
 }
 \rfoot{}
@@ -124,8 +118,8 @@
 \newenvironment{highlightbox}{%
     \begin{tcolorbox}[
             width=\columnwidth,
-            colback=utfsmblue!14,
-            colframe=utfsmblue,
+            colback=ptblue!14,
+            colframe=ptblue,
             boxrule=0.4pt,
             arc=3pt,
             outer arc=3pt
