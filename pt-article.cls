@@ -79,6 +79,17 @@
     \thepage%
     {%
         \color{ptblue!21}
+        \ifdefined\pt@version
+            \\v\pt@version
+        \fi
+        \ifdefined\pt@build
+            \ifdefined\pt@version.\else\\B\fi
+            \ifdefstring{\pt@build}{auto}{\buildcount}{\pt@build}- \todayymd
+        \else
+            \ifdefined\pt@version
+                \ - \todayymd
+            \fi
+        \fi
     }%
 }
 \rfoot{}
@@ -97,12 +108,23 @@
     \renewcommand{\thefootnote}{\alph{footnote}}
     \twocolumn[%
         \begin{@twocolumnfalse}%
-            \ifvardefined{pt@logo}{\noindent\includegraphics[height=30pt]{\pt@logo}\vspace{14pt}}{}%
+            \ifdefstring{\pt@logo}{}{}{%
+                \noindent\includegraphics[height=30pt]{\pt@logo}%
+                \vspace{14pt}%
+            }
             \begin{center}%
                 \vspace{6pt}%
                 {\Huge\pt@title}\\%
-                \ifvardefined{pt@titlesub}{\vspace{6pt}{\LARGE\pt@titlesub}\\}{}%
-                \ifvardefined{pt@titlesubsub}{\vspace{6pt}\ifvardefined{pt@watermark}{\pt@watermark\ - }{}{\pt@titlesubsub}\\}{}%
+                \ifdefined\pt@titlesub\vspace{6pt}{\LARGE\pt@titlesub}\\
+                \fi
+                \ifdefined\pt@titlesubsub
+                    \vspace{6pt}
+                    \ifdefined\pt@watermark
+                        \pt@watermark\ - 
+                    \else
+                        {\pt@titlesubsub}\\
+                    \fi
+                \fi
                 \ifnum\value{authorindex}>0%
                 \vspace{12pt}%
                 \titleauthorsboxes%
@@ -141,10 +163,21 @@
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AfterEndPreamble{
-    \ifvardefined{pta@watermark}{%
+    \ifdefined\pta@watermark
         \DraftwatermarkOptions{stamp=true}
-        \SetWatermarkText{\pta@watermark\ifvardefined{pta@version}{\ - v\pta@version\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{.\buildcount}{.\pta@build}}{}}{\ifvardefined{pta@build}{\ifdefstring{\pta@build}{auto}{\ - B\buildcount}{\ - B\pta@build}}{}}}
-    }{}
+        \SetWatermarkText{\pta@watermark
+            \ifdefined\pta@version
+                \ - v\pta@version
+                \ifdefined\pta@build
+                    \ifdefstring{\pta@build}{auto}{.\buildcount}{.\pta@build}
+                \fi
+            \else
+                \ifdefined\pta@build
+                    \ifdefstring{\pta@build}{auto}{\ - B\buildcount}{\ - B\pta@build}
+                \fi
+            \fi
+        }
+    \fi
     \maketitle
 }
 
