@@ -64,7 +64,6 @@
     \@startsection{paragraph}
     {4}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\underline}%
 }
-\RequirePackage{flushend}
 \flushbottom
 
 % Header and footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,9 +133,18 @@
         }{
     \end{tcolorbox}
 }
+% Balance columns
+\newif\ifpt@balancecolumns
+\pt@balancecolumnstrue
+\newcommand\ptbalancecolumns{\pt@balancecolumnstrue}
+\newcommand\ptnobalancecolumns{\pt@balancecolumnsfalse}
+\ptbalancecolumns
+\ifpt@balancecolumns
+\else
+    \RequirePackage{flushend}
+\fi
 
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \AfterEndPreamble{
     \ifvardefined{pta@watermark}{%
