@@ -159,6 +159,22 @@
 \else
     \RequirePackage{flushend}%
 \fi
+% Quotation
+\renewenvironment{quotation}{
+    \list{}{
+        \leftmargin=21pt
+        \rightmargin=21pt
+        \parsep=7pt
+        \topsep=7pt
+        \listparindent=14pt
+        \itemindent=\listparindent
+        \itshape
+    }
+    \item\relax
+}
+{
+    \endlist
+}
 
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
