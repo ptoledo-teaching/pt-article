@@ -157,7 +157,7 @@
 \ptbalancecolumns
 \ifpt@balancecolumns
 \else
-    \RequirePackage{flushend}
+    \RequirePackage{flushend}%
 \fi
 
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
