@@ -121,7 +121,7 @@
                     \vspace{6pt}
                     \ifdefined\pt@watermark
                         \pt@watermark\ - 
-                    \else
+                        \else
                         {\pt@titlesubsub}\\
                     \fi
                 \fi
