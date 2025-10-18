@@ -179,17 +179,17 @@
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AfterEndPreamble{
-    \ifdefined\pta@watermark
+    \ifdefined\pt@watermark
         \DraftwatermarkOptions{stamp=true}
-        \SetWatermarkText{\pta@watermark
-            \ifdefined\pta@version
-                \ - v\pta@version
-                \ifdefined\pta@build
-                    \ifdefstring{\pta@build}{auto}{.\buildcount}{.\pta@build}
+        \SetWatermarkText{\pt@watermark
+            \ifdefined\pt@version
+                \ - v\pt@version
+                \ifdefined\pt@build
+                    \ifdefstring{\pt@build}{auto}{.\buildcount}{.\pt@build}
                 \fi
             \else
-                \ifdefined\pta@build
-                    \ifdefstring{\pta@build}{auto}{\ - B\buildcount}{\ - B\pta@build}
+                \ifdefined\pt@build
+                    \ifdefstring{\pt@build}{auto}{\ - B\buildcount}{\ - B\pt@build}
                 \fi
             \fi
         }
