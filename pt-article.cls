@@ -177,19 +177,6 @@
     \titleauthorsfootnotes%
     \renewcommand{\thefootnote}{\arabic{footnote}}%
 }
-% Highlight box
-\newenvironment{highlightbox}{%
-    \begin{tcolorbox}[
-            width=\columnwidth,
-            colback=ptblue!14,
-            colframe=ptblue,
-            boxrule=0.4pt,
-            arc=3pt,
-            outer arc=3pt
-        ]
-        }{
-    \end{tcolorbox}
-}
 % Balance columns at the end of the document.
 % Default: do NOT force balancing (safer for long figures). Call \ptbalancecolumns to enable.
 \newif\ifpt@balancecolumns
