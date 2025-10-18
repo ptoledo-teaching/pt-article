@@ -1,24 +1,48 @@
-\ProvidesClass{pt-article}[2021/07/01 v1.0 PT Article Class]
+%%
+%% pt-article.cls
+%% Article document class for ptoledo-teaching
+%%
+%% Author: Pedro Toledo Correa
+%% Repo: https://github.com/ptoledo-teaching/pt-commons
+%% License: LaTeX Project Public License 1.3c or later
+%% Created: 2021-07-01
+%% Updated: 2025-10-18
+%% Version: v0.1
+%%
+%% -----------------------------------------------------------------
+%% This work may be distributed and/or modified under
+%% the conditions of the LaTeX Project Public License,
+%% version 1.3c or later. The latest version is available at:
+%%     https://www.latex-project.org/lppl.txt
+%% -----------------------------------------------------------------
+%%
+
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{pt-article}[2025/10/18 v0.1 PT Article Class]
+\makeatletter
 
 % Class handling %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Pass user options to pt-commons
-\DeclareOption*{%
-    \PassOptionsToClass{\CurrentOption}{pt-commons}
-}
+% Declare language options for pt-commons
+\DeclareOption{spanish}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{portuguese}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{french}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{nominted}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+% Pass all other options to base article class
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+% Default options
+\ExecuteOptions{letterpaper}
 \ProcessOptions\relax
-% Fixed options
-\PassOptionsToClass{letterpaper}{article}
-% Loading class
+% Load base class
 \LoadClass{article}
-% Loading pt-commons
+% Load pt-commons package
 \RequirePackage{pt-commons}
 
 % Page and text formatting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Font sizing
-\RequirePackage{microtype}
+% microtype is already loaded by pt-commons; avoid duplicate loads
 % Page size
 \geometry{
     left=42pt,
@@ -33,35 +57,53 @@
 \setlength{\parindent}{21pt}
 % Line spacing
 \sloppy
-% Lists spacing
-\def\@listi{\leftmargin 21pt \labelsep 6pt \topsep 6pt \parsep 0pt \itemsep 0pt}
-\let\@listI\@listi
-\def\@listii{\leftmargin 12pt \topsep 0pt}
-\def\@listiii{}
-\def\@listiv{}
+% Lists spacing (use enumitem rather than redefining LaTeX internals)
+\setlist[itemize,1]{
+    leftmargin=21pt,
+    labelsep=6pt,
+    topsep=6pt,
+    parsep=0pt,
+    itemsep=0pt
+}
+\setlist[itemize,2]{
+    leftmargin=12pt,
+    topsep=0pt
+}
+\setlist[enumerate,1]{
+    leftmargin=21pt,
+    labelsep=6pt,
+    topsep=6pt,
+    parsep=0pt,
+    itemsep=0pt
+}
+\setlist[enumerate,2]{
+    leftmargin=12pt,
+    topsep=0pt
+}
 % Sections formating
-\renewcommand{\section}{
-    \@startsection{section}
+\renewcommand{\section}{%
+    \@startsection{section}%
     {1}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\large\bfseries}%
 }
 \renewcommand*\l@section[2]{%
     \ifnum \c@tocdepth >\z@
-        \addvspace{6pt}{\@dottedtocline{3}{0pt}{21pt}{\bfseries #1}{\bfseries #2}}
+        \addvspace{6pt}%
+        \@dottedtocline{1}{0pt}{21pt}{\bfseries #1}{\bfseries #2}%
     \fi
 }
-\renewcommand{\subsection}{
-    \@startsection{subsection}
+\renewcommand{\subsection}{%
+    \@startsection{subsection}%
     {2}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\bfseries}%
 }
 \renewcommand{\l@subsection}{\@dottedtocline{2}{0pt}{21pt}}
-\renewcommand{\subsubsection}{
-    \@startsection{subsubsection}
+\renewcommand{\subsubsection}{%
+    \@startsection{subsubsection}%
     {3}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize}%
 }
 \def\@seccntformat#1{\makebox[21pt][l]{\csname the#1\endcsname.}}
 \renewcommand{\l@subsubsection}{\@dottedtocline{3}{0pt}{21pt}}
-\renewcommand\paragraph{
-    \@startsection{paragraph}
+\renewcommand\paragraph{%
+    \@startsection{paragraph}%
     {4}{\z@}{6pt \@plus 3pt \@minus 3pt}{6pt \@plus 3pt \@minus 3pt}{\normalfont\normalsize\underline}%
 }
 \flushbottom
@@ -70,7 +112,7 @@
 
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
-\renewcommand{\headrule}{}
+\renewcommand{\headrulewidth}{0pt} % Disable header rule
 \lhead{}
 \chead{}
 \rhead{}
@@ -104,27 +146,26 @@
 % Elements %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Title
-\renewcommand{\maketitle}{
-    \renewcommand{\thefootnote}{\alph{footnote}}
+\renewcommand{\maketitle}{%
+    \renewcommand{\thefootnote}{\alph{footnote}}%
     \twocolumn[%
         \begin{@twocolumnfalse}%
             \ifdefstring{\pt@logo}{}{}{%
                 \noindent\includegraphics[height=30pt]{\pt@logo}%
                 \vspace{14pt}%
-            }
+            }%
             \begin{center}%
                 \vspace{6pt}%
                 {\Huge\pt@title}\\%
-                \ifdefined\pt@titlesub\vspace{6pt}{\LARGE\pt@titlesub}\\
-                \fi
-                \ifdefined\pt@titlesubsub
-                    \vspace{6pt}
-                    \ifdefined\pt@watermark
-                        \pt@watermark\ - 
-                        \else
-                        {\pt@titlesubsub}\\
-                    \fi
-                \fi
+                \ifdefined\pt@titlesub\vspace{6pt}{\LARGE\pt@titlesub}\\\fi%
+                \ifdefined\pt@titlesubsub%
+                    \vspace{6pt}%
+                    \ifdefined\pt@watermark%
+                        \pt@watermark\ - %
+                        \else%
+                        {\pt@titlesubsub}\\%
+                    \fi%
+                \fi%
                 \ifnum\value{authorindex}>0%
                 \vspace{12pt}%
                 \titleauthorsboxes%
@@ -132,9 +173,9 @@
             \end{center}%
             \vspace{21pt}%
         \end{@twocolumnfalse}%
-    ]
-    \titleauthorsfootnotes
-    \renewcommand{\thefootnote}{\arabic{footnote}}
+    ]%
+    \titleauthorsfootnotes%
+    \renewcommand{\thefootnote}{\arabic{footnote}}%
 }
 % Highlight box
 \newenvironment{highlightbox}{%
@@ -149,52 +190,34 @@
         }{
     \end{tcolorbox}
 }
-% Balance columns
+% Balance columns at the end of the document.
+% Default: do NOT force balancing (safer for long figures). Call \ptbalancecolumns to enable.
 \newif\ifpt@balancecolumns
-\pt@balancecolumnstrue
+\pt@balancecolumnsfalse
 \newcommand\ptbalancecolumns{\pt@balancecolumnstrue}
 \newcommand\ptnobalancecolumns{\pt@balancecolumnsfalse}
-\ptbalancecolumns
-\ifpt@balancecolumns
-\else
-    \RequirePackage{flushend}%
-\fi
+% Load flushend only if balancing was requested (deferred to begin-document)
+\AtBeginDocument{\ifpt@balancecolumns\RequirePackage{flushend}\fi}
 % Quotation
-\renewenvironment{quotation}{
-    \list{}{
-        \leftmargin=21pt
-        \rightmargin=21pt
-        \parsep=7pt
-        \topsep=7pt
-        \listparindent=14pt
-        \itemindent=\listparindent
-        \itshape
-    }
-    \item\relax
-}
-{
-    \endlist
+\renewenvironment{quotation}{%
+    \list{}{%
+        \leftmargin=21pt%
+        \rightmargin=21pt%
+        \parsep=7pt%
+        \topsep=7pt%
+        \listparindent=14pt%
+        \itemindent=\listparindent%
+        \itshape%
+    }%
+    \item\relax%
+}{%
+    \endlist%
 }
 
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\AfterEndPreamble{
-    \ifdefined\pt@watermark
-        \DraftwatermarkOptions{stamp=true}
-        \SetWatermarkText{\pt@watermark
-            \ifdefined\pt@version
-                \ - v\pt@version
-                \ifdefined\pt@build
-                    \ifdefstring{\pt@build}{auto}{.\buildcount}{.\pt@build}
-                \fi
-            \else
-                \ifdefined\pt@build
-                    \ifdefstring{\pt@build}{auto}{\ - B\buildcount}{\ - B\pt@build}
-                \fi
-            \fi
-        }
-    \fi
-    \maketitle
-}
+\AfterEndPreamble{\maketitle}
+
+\makeatother
 
 \endinput

@@ -1,111 +1,452 @@
-\documentclass[letterpaper]{pt-article}
+%%
+%% PT Article Template
+%% Full-featured template demonstrating all capabilities
+%%
+%% Author: Pedro Toledo Correa
+%% Version: 0.1
+%% Date: 2025-10-18
+%%
 
-\selectlanguage{spanish}
+\documentclass{pt-article}
+% Available options:
+% - Language: spanish (default), english, portuguese, french
+% - Code: nominted (disable minted, use verbatim)
+% - Standard article options: twocolumn, onecolumn, 10pt, 11pt, 12pt
 
-\logo{utfsm-inf}
-\title{Plantilla ejemplo para artículos}
-\titlesub{Departamento de Informática - UTFSM}
-\addauthor{Toledo Correa}{Pedro}{pedro.toledo@usm.cl}{Universidad Técnica Federico Santa María}
+% Document metadata
+\title{Título del Artículo}
+\titlesub{Subtítulo Opcional}
+\titlesubsub{Sub-subtítulo Opcional}
+
+% Version control
+\version{1.0}
+\build{auto}  % Use 'auto' for automatic build counting or specify a number
+% \watermark{BORRADOR}  % Uncomment to add watermark
+
+% Authors (add as many as needed)
+\addauthor{Nombre}{Apellido}{correo@ejemplo.com}{Departamento, Universidad}
+\addauthor{Segundo}{Autor}{segundo.autor@universidad.cl}{Instituto de Investigación}
+
+% Optional: Add institutional logo
+% \logo{}
+
+% Academic/Class information (optional)
+\classcode{IWI-131}
+\classname{Programación}
+\classsemester{Primer Semestre 2025}
+
+% Institution information (optional)
+\department{Departamento de Informática}
+\school{Escuela de Ingeniería}
+\university{Universidad Técnica Federico Santa María}
 
 \begin{document}
 
-\tableofcontents
-\listoffigures
-\listoftables
-\templaterule
+% Title is automatically generated at the beginning
+
+% Abstract (optional)
+\begin{abstract}
+Este es el resumen del artículo. Debe proporcionar una descripción concisa
+del contenido, objetivos, metodología y principales conclusiones del trabajo.
+Típicamente no debe exceder las 250 palabras.
+\end{abstract}
+
+% Table of contents (optional)
+% \tableofcontents
+% \ptlistoffigures  % Only shown if figures exist
+% \ptlistoftables   % Only shown if tables exist
+% \ptlistofcodes    % Only shown if code listings exist
 
 \section{Introducción}
 
-Este es un ejemplo para utilizar la clase \texttt{pt-article} desarrollada por Pedro Toledo Correa para el uso de sus estudiantes o de quien quiera.
+Esta es una plantilla completa que demuestra todas las capacidades de la clase
+\inlinecode{pt-article}. El documento está configurado en formato de dos columnas
+con márgenes optimizados y espaciado profesional.
 
-Esta clase es simplemente una colección de formatos, macros y comandos que facilitan la escritura de artículos en \LaTeX dejando el documento ``lindo'' de acuerdo a lo que el autor considera ``lindo'', lo cual puede no ser lo que el resto del mundo considera ``lindo''. Este formato es una mezcla frankinsteniana de estilos que no cumplen ningún estándar conocido por el autor.
+\subsection{Características Principales}
+
+La clase \inlinecode{pt-article} extiende la clase estándar \inlinecode{article}
+de \LaTeX{} con las siguientes características:
+
+\begin{itemize}
+    \item Diseño profesional de dos columnas
+    \item Generación automática de página de título
+    \item Gestión avanzada de autores con afiliaciones
+    \item Control de versiones y numeración de compilaciones
+    \item Formato personalizado de secciones
+    \item Cajas de resaltado para contenido importante
+    \item Notas al pie en el lado derecho
+    \item Todas las características del paquete \inlinecode{pt-commons}
+\end{itemize}
+
+\subsection{Opciones de la Clase}
+
+El documento puede configurarse con diferentes opciones:
+
+\begin{enumerate}
+    \item \textbf{Idiomas:} spanish, english, portuguese, french
+    \item \textbf{Código:} nominted (desactiva minted)
+    \item \textbf{Estándar:} twocolumn, onecolumn, 10pt, 11pt, 12pt
+\end{enumerate}
+
+\section{Formato de Texto}
+
+\subsection{Estilos Básicos}
+
+El texto puede ser \textbf{negrita}, \textit{cursiva}, \underline{subrayado},
+o \texttt{monoespaciado}. También se puede combinar \textbf{\textit{negrita
+con cursiva}}.
+
+Para código en línea, use el comando \inlinecode{\textbackslash{}inlinecode\{texto\}}
+que produce: \inlinecode{variable\_name}.
+
+\subsection{Párrafos y Espaciado}
+
+La clase configura automáticamente:
+\begin{itemize}
+    \item Indentación de párrafo: 21pt
+    \item Separación de columnas: 21pt
+    \item Márgenes: 42pt en todos los lados
+\end{itemize}
+
+\subsubsection{Sub-subsecciones}
+
+Las sub-subsecciones tienen formato normal (no negrita) para diferenciarlas
+visualmente de las subsecciones.
+
+\paragraph{Títulos de Párrafo}
+
+Los párrafos pueden tener títulos subrayados usando el comando
+\inlinecode{\textbackslash{}paragraph}.
+
+\section{Elementos Especiales}
+
+\subsection{Caja de Resaltado}
+
+Use el entorno \inlinecode{highlightbox} para resaltar información importante:
+
+\begin{highlightbox}
+\textbf{Nota Importante:} Esta es una caja de resaltado que llama la atención
+sobre información clave. Es útil para advertencias, notas importantes, o
+conceptos destacados.
+\end{highlightbox}
+
+Las cajas de resaltado tienen:
+\begin{itemize}
+    \item Fondo azul claro (\inlinecode{ptblue!14})
+    \item Borde azul (\inlinecode{ptblue})
+    \item Esquinas redondeadas
+    \item Ancho completo de columna
+\end{itemize}
+
+\subsection{Citas}
+
+Para citas largas, use el entorno \inlinecode{quotation}:
+
+\begin{quotation}
+``La tipografía es el arte de dotar al lenguaje humano de una forma visual
+duradera, y por lo tanto, de una existencia independiente.''
+
+--- Robert Bringhurst, \textit{The Elements of Typographic Style}
+\end{quotation}
 
 \section{Listas}
 
-Las listas numeradas pueden llegar hasta cuatro niveles. Una lista numerada de 4 niveles ejemplo es la siguiente:
+\subsection{Listas con Viñetas}
 
-\begin{enumerate}
-  \item Primer nivel
-  \item Primer nivel
-  \begin{enumerate}
-    \item Segundo nivel
-    \item Segundo nivel
-    \begin{enumerate}
-      \item Tercer nivel
-      \begin{enumerate}
-        \item Cuarto nivel
-      \end{enumerate}
-    \end{enumerate}
-  \end{enumerate}
-\end{enumerate}
-
-Una lista no numerada de 6 niveles es la siguiente:
+Las listas con viñetas tienen espaciado optimizado:
 
 \begin{itemize}
- \item Primer nivel
- \begin{itemize}
-  \item Segundo nivel
-  \begin{itemize}
-   \item Tercer nivel
-   \begin{itemize}
-    \item Cuarto nivel
-   \end{itemize}
-  \end{itemize}
- \end{itemize}
+    \item Primer elemento de nivel uno
+    \item Segundo elemento de nivel uno
+    \begin{itemize}
+        \item Elemento de nivel dos
+        \item Otro elemento de nivel dos
+    \end{itemize}
+    \item Tercer elemento de nivel uno
 \end{itemize}
 
-Pasado el sexto nivel el comportamiento es el por omisión de la clase \texttt{article}.
+\subsection{Listas Numeradas}
 
-\section{Floats}
+Las listas numeradas también tienen formato consistente:
 
-\subsection{Figuras}
+\begin{enumerate}
+    \item Primer paso del procedimiento
+    \item Segundo paso del procedimiento
+    \begin{enumerate}
+        \item Sub-paso 2.1
+        \item Sub-paso 2.2
+    \end{enumerate}
+    \item Tercer paso del procedimiento
+\end{enumerate}
 
-La Figura~\ref{fig:dummy} que muestra el formato en que se presentan las figuras en este documento. Para esto está disponible el marco \texttt{ptfigure} que recibe los mismos argumentos que el marco \texttt{ptfigure} de la clase que facilita el proceso.
+\section{Tablas}
 
-\ptfigure{ht}{width=\columnwidth}{./images/jarjar}{Imagen ejemplo para el template}{dummy}
+\subsection{Tablas Básicas}
 
-\subsection{Tablas}
+La clase utiliza \inlinecode{tabularray} para tablas mejoradas:
 
-Las tablas de este template se han desarrollado mediante el uso de \texttt{tabularray} que provee múltiples opciones para el desarrollo de tablas con estilos propios. Un ejemplo de uso se puede ver en la Tabla \ref{tab:example}.
-
-\begin{table}[hbt]
-  \begin{tblr}{colspec={|C{16pt}|X|R{16pt}|}}
+\begin{table}[h]
+\centering
+\begin{tblr}{colspec={lcc}}
+    \tableheader
+    Método & Precisión & Tiempo \\
     \hline
-    \tableheader Id & Otro dato & \cellrotated{Un número} \\
-    \hline
-    \hline
-    \tablesubheader \SetCell[c=2]{l}{Un grupo} & & 10\\
-    \hline
-    1 & Primer dato & 3\\
-    \hline
-    2 & Segundo dato & 7\\
-    \hline
-    \tablesubheader \SetCell[c=2]{l}{Otro grupo} & & 17\\
-    \hline
-    3 & Primer dato & 5 \\
-    \hline
-    4 & Segundo dato & 12 \\
-    \hline
-    \hline
-    \tableheader \SetRow{r} \SetCell[c=2]{r}{Total} & & 27 \\
-    \hline
-  \end{tblr}
-  \caption{Ejemplo de tabla para el template}
-  \label{tab:example}
+    Algoritmo A & 95\% & 10s \\
+    Algoritmo B & 97\% & 15s \\
+    Algoritmo C & 93\% & 8s \\
+\end{tblr}
+\caption{Comparación de algoritmos}
+\label{tab:comparacion}
 \end{table}
 
-\section{Sección}
-Lorem ipsum dolor sit amet,\footnote{example foot note} consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+\subsection{Tablas Avanzadas}
 
-Lorem ipsum dolor sit amet,\footnote{example foot note} consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+Tabla con sub-encabezados y celdas personalizadas:
 
-\subsection{Sub-sección}
-Lorem ipsum dolor sit amet,\footnote{example foot note} consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+\begin{table}[h]
+\centering
+\begin{tblr}{
+    colspec={lccc},
+    width=\columnwidth
+}
+    \tableheader
+    \tablecellcenter Característica & Clase A & Clase B & Clase C \\
+    \hline
+    \tablesubheader
+    \tablecellbold Rendimiento & Alto & Medio & Bajo \\
+    Velocidad & 100 & 75 & 50 \\
+    Memoria & 512 MB & 256 MB & 128 MB \\
+    \hline
+    \tablecellbold Total & \tablecellbold 100\% & 75\% & 50\% \\
+\end{tblr}
+\caption{Características de las clases}
+\label{tab:caracteristicas}
+\end{table}
 
-\subsubsection{Sub-sub-sección}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+\section{Figuras}
 
-\paragraph{Párrafo}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat lacus quis ligula consequat auctor. Mauris in orci sit amet eros consequat ultrices. Vestibulum eu enim a massa elementum pellentesque quis egestas augue. Morbi lacinia, ipsum eu elementum vulputate, neque felis ornare justo, eget tristique augue leo vel sem. Vestibulum nisl sapien, pretium ac molestie venenatis, interdum non est. Integer viverra, lacus id sollicitudin mollis, quam orci pharetra ante, a maximus nulla erat quis felis.
+\subsection{Figura Simple}
+
+Use el comando \inlinecode{\textbackslash{}ptfigure} para insertar figuras:
+
+\ptfigure{h}{width=0.8\columnwidth}{images/jarjar.jpg}{Figura del personaje Jar Jar Binks}{fig:jarjar}
+
+Las figuras se centran automáticamente y tienen el formato adecuado.
+
+\subsection{Múltiples Figuras}
+
+También puede usar el entorno estándar de figura:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{images/jarjar.jpg}
+    \caption{Figura insertada manualmente}
+    \label{fig:manual}
+\end{figure}
+
+\section{Código Fuente}
+
+\subsection{Código en Línea}
+
+Use \inlinecode{\textbackslash{}inlinecode\{\}} para código en línea:
+\inlinecode{def function():} o \inlinecode{int main()}.
+
+\subsection{Bloques de Código}
+
+Con minted habilitado (compile con \inlinecode{-shell-escape}):
+
+\begin{minted}{python}
+def fibonacci(n):
+    """Calculate Fibonacci number."""
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# Example usage
+result = fibonacci(10)
+print(f"Fibonacci(10) = {result}")
+\end{minted}
+
+\subsection{Código para Impresión}
+
+Use \inlinecode{ptprintcode} para código en blanco y negro con marco:
+
+\begin{ptprintcode}{c}
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+\end{ptprintcode}
+
+\section{Matemáticas}
+
+\subsection{Ecuaciones en Línea}
+
+Las ecuaciones en línea se escriben entre \$: La ecuación $E = mc^2$ es famosa.
+
+\subsection{Ecuaciones Numeradas}
+
+\begin{equation}
+    \int_{0}^{\infty} e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+    \label{eq:gaussian}
+\end{equation}
+
+\subsection{Múltiples Ecuaciones}
+
+\begin{align}
+    f(x) &= x^2 + 2x + 1 \\
+    f'(x) &= 2x + 2 \\
+    f''(x) &= 2
+\end{align}
+
+\section{Árboles de Archivos}
+
+La clase incluye soporte para visualización de estructura de directorios:
+
+\begin{filetree}
+\begin{ptdirtree}
+    \dirtree{%
+        .1 \treeiconfirst{proyecto/}.
+        .2 \treeicon{src/}.
+        .3 \treeicon{main.py}.
+        .3 \treeicon{utils.py}.
+        .3 \treeicon{config.json}.
+        .2 \treeicon{docs/}.
+        .3 \treeicon{README.md}.
+        .3 \treeicon{tutorial.pdf}.
+        .2 \treeicon{tests/}.
+        .3 \treeicon{test\_main.py}.
+        .2 \treeicon{requirements.txt}.
+        .2 \treeicon{.gitignore}.
+    }%
+\end{ptdirtree}
+\caption{Estructura del proyecto}
+\label{fig:tree}
+\end{filetree}
+
+\section{Colores}
+
+\subsection{Paleta de Colores PT}
+
+La clase proporciona una paleta de colores predefinida:
+
+\begin{itemize}
+    \item \textcolor{ptred}{Rojo PT (ptred)}
+    \item \textcolor{ptdarkred}{Rojo Oscuro PT (ptdarkred)}
+    \item \textcolor{ptlightblue}{Azul Claro PT (ptlightblue)}
+    \item \textcolor{ptblue}{Azul PT (ptblue)}
+    \item \textcolor{ptdarkblue}{Azul Oscuro PT (ptdarkblue)}
+    \item \textcolor{ptgreen}{Verde PT (ptgreen)}
+    \item \textcolor{ptdarkgreen}{Verde Oscuro PT (ptdarkgreen)}
+    \item \textcolor{ptyellow}{Amarillo PT (ptyellow)}
+    \item \textcolor{ptdarkyellow}{Amarillo Oscuro PT (ptdarkyellow)}
+    \item \textcolor{ptgray}{Gris PT (ptgray)}
+    \item \textcolor{ptdarkgray}{Gris Oscuro PT (ptdarkgray)}
+\end{itemize}
+
+\section{Referencias}
+
+\subsection{Referencias Cruzadas}
+
+Puede hacer referencia a secciones, figuras, tablas y ecuaciones:
+
+\begin{itemize}
+    \item Ver Figura~\ref{fig:jarjar} para el logo
+    \item La Tabla~\ref{tab:comparacion} muestra los resultados
+    \item La Ecuación~\ref{eq:gaussian} es la integral gaussiana
+    \item Ver Figura~\ref{fig:tree} para la estructura del proyecto
+\end{itemize}
+
+\subsection{Notas al Pie}
+
+Las notas al pie\footnote{Esta es una nota al pie que aparece en el lado
+derecho de la página.} se colocan automáticamente en el lado derecho.
+
+\section{Balance de Columnas}
+
+Por defecto, las columnas NO se balancean al final del documento (más seguro
+para figuras grandes). Para habilitar el balance de columnas:
+
+% \ptbalancecolumns  % Descomente para balancear columnas
+
+Para deshabilitarlo explícitamente:
+
+% \ptnobalancecolumns
+
+\section{Control de Versiones}
+
+\subsection{Numeración de Versiones}
+
+El pie de página muestra automáticamente:
+\begin{itemize}
+    \item Versión: \docversion
+    \item Número de compilación (si está configurado)
+    \item Fecha: \todayymd
+\end{itemize}
+
+\subsection{Marcas de Agua}
+
+Descomente la línea \inlinecode{\textbackslash{}watermark\{BORRADOR\}} en el
+preámbulo para agregar una marca de agua. La marca de agua incluye
+automáticamente la versión y el número de compilación.
+
+\section{Compilación}
+
+\subsection{Compilación Estándar}
+
+\begin{minted}{bash}
+pdflatex template.tex
+\end{minted}
+
+\subsection{Con Minted (Resaltado de Código)}
+
+\begin{minted}{bash}
+pdflatex -shell-escape template.tex
+\end{minted}
+
+\subsection{Compilación Completa}
+
+Para documentos con bibliografía:
+
+\begin{minted}{bash}
+pdflatex -shell-escape template.tex
+bibtex template
+pdflatex -shell-escape template.tex
+pdflatex -shell-escape template.tex
+\end{minted}
+
+\section{Consejos y Mejores Prácticas}
+
+\begin{highlightbox}
+\textbf{Consejos para Usuarios:}
+\begin{itemize}
+    \item Use \inlinecode{\textbackslash{}addauthor} para gestión correcta de autores
+    \item Habilite balance de columnas solo en versión final
+    \item Use cajas de resaltado con moderación
+    \item Configure versión y compilación para control de versiones
+    \item Use \inlinecode{ptfigure} para consistencia
+    \item Compile con \inlinecode{-shell-escape} para minted
+    \item Use \inlinecode{\textbackslash{}inlinecode} para fragmentos de código
+    \item Deje que la clase maneje el espaciado
+\end{itemize}
+\end{highlightbox}
+
+\section{Conclusión}
+
+Esta plantilla demuestra todas las capacidades de la clase \inlinecode{pt-article}.
+Para más información, consulte:
+
+\begin{itemize}
+    \item README.md en el directorio de la clase
+    \item Documentación de pt-commons
+    \item Repositorio: \url{https://github.com/ptoledo-teaching/pt-commons}
+\end{itemize}
+
+% Bibliography (optional)
+% \bibliographystyle{plain}
+% \bibliography{references}
 
 \end{document}
