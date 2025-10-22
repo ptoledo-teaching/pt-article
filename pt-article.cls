@@ -110,31 +110,6 @@
 
 % Header and footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage{fancyhdr}
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt} % Disable header rule
-\lhead{}
-\chead{}
-\rhead{}
-\lfoot{}
-\cfoot{
-    \thepage%
-    {%
-        \color{ptblue!21}
-        \ifdefined\pt@version
-            \\v\pt@version
-        \fi
-        \ifdefined\pt@build
-            \ifdefined\pt@version.\else\\B\fi
-            \ifdefstring{\pt@build}{auto}{\buildcount}{\pt@build}- \todayymd
-        \else
-            \ifdefined\pt@version
-                \ - \todayymd
-            \fi
-        \fi
-    }%
-}
-\rfoot{}
 % Right footnotes and fixing rule
 \RequirePackage{ftnright}
 \renewcommand\footnoterule{
