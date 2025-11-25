@@ -181,6 +181,7 @@
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AfterEndPreamble{\maketitle}
+\AtBeginEnvironment{tblr}{\footnotesize}
 
 \makeatother
 
