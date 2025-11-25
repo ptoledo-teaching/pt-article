@@ -51,6 +51,8 @@
     bottom=42pt,
     includefoot
 }
+% Header and footer style
+\pagestyle{fancy}
 % Column separation
 \setlength{\columnsep}{21pt}
 % Paragraph indentation
