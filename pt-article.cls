@@ -43,6 +43,8 @@
 
 % Font sizing
 % microtype is already loaded by pt-commons; avoid duplicate loads
+% Fancy footer
+\pagestyle{fancy}
 % Page size
 \geometry{
     left=42pt,
