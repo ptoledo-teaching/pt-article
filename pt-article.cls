@@ -178,6 +178,11 @@
     \endlist%
 }
 
+% Directory tree styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\DTbaselineskip}{0.5cm}
+\renewcommand{\DTstyle}{\ttfamily\scriptsize}
+
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AfterEndPreamble{
