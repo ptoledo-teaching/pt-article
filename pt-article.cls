@@ -139,9 +139,8 @@
                     \vspace{6pt}%
                     \ifdefined\pt@watermark%
                         \pt@watermark\ - %
-                        \else%
-                        {\pt@titlesubsub}\\%
                     \fi%
+                    {\pt@titlesubsub}\\%
                 \fi%
                 \ifnum\value{authorindex}>0%
                 \vspace{12pt}%
