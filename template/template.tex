@@ -3,8 +3,8 @@
 %% Full-featured template demonstrating all capabilities
 %%
 %% Author: Pedro Toledo Correa
-%% Version: 0.1
-%% Date: 2025-10-18
+%% Version: 0.2
+%% Date: 2026-08-28
 %%
 
 \documentclass{pt-article}
@@ -20,7 +20,7 @@
 
 % Version control
 \version{1.0}
-\build{auto}  % Use 'auto' for automatic build counting or specify a number
+\build{auto}  % Advances when a tracked source changes; a number stays fixed
 % \watermark{BORRADOR}  % Uncomment to add watermark
 
 % Authors (add as many as needed)
@@ -93,9 +93,9 @@ El documento puede configurarse con diferentes opciones:
 
 \subsection{Estilos Básicos}
 
-El texto puede ser \textbf{negrita}, \textit{cursiva}, \underline{subrayado},
-o \texttt{monoespaciado}. También se puede combinar \textbf{\textit{negrita
-con cursiva}}.
+El texto admite estilos como \textbf{negrita}, \textit{cursiva},
+\underline{subrayado} y \texttt{monoespaciado}. Los estilos también pueden
+combinarse, por ejemplo, como \textbf{\textit{negrita con cursiva}}.
 
 Para código en línea, use el comando \inlinecode{\textbackslash{}inlinecode\{texto\}}
 que produce: \inlinecode{variable\_name}.
@@ -230,7 +230,7 @@ Tabla con sub-encabezados y celdas personalizadas:
 
 Use el comando \inlinecode{\textbackslash{}ptfigure} para insertar figuras:
 
-\ptfigure{h}{width=0.8\columnwidth}{figures/jarjar.jpg}{Figura del personaje Jar Jar Binks}{fig:jarjar}
+\ptfigure{ht}{width=0.8\columnwidth}{figures/jarjar.jpg}{Figura del personaje Jar Jar Binks}{fig:jarjar}
 
 Las figuras se centran automáticamente y tienen el formato adecuado.
 
@@ -238,7 +238,7 @@ Las figuras se centran automáticamente y tienen el formato adecuado.
 
 También puede usar el entorno estándar de figura:
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\columnwidth]{figures/jarjar.jpg}
     \caption{Figura insertada manualmente}
@@ -256,7 +256,7 @@ Use \inlinecode{\textbackslash{}inlinecode\{\}} para código en línea:
 
 Con minted habilitado (compile con \inlinecode{-shell-escape}):
 
-\begin{minted}{python}
+\begin{ptprintcode}{python}
 def fibonacci(n):
     """Calculate Fibonacci number."""
     if n <= 1:
@@ -266,7 +266,7 @@ def fibonacci(n):
 # Example usage
 result = fibonacci(10)
 print(f"Fibonacci(10) = {result}")
-\end{minted}
+\end{ptprintcode}
 
 \subsection{Código para Impresión}
 
@@ -397,26 +397,26 @@ automáticamente la versión y el número de compilación.
 
 \subsection{Compilación Estándar}
 
-\begin{minted}{bash}
+\begin{ptprintcode}{bash}
 pdflatex template.tex
-\end{minted}
+\end{ptprintcode}
 
 \subsection{Con Minted (Resaltado de Código)}
 
-\begin{minted}{bash}
+\begin{ptprintcode}{bash}
 pdflatex -shell-escape template.tex
-\end{minted}
+\end{ptprintcode}
 
 \subsection{Compilación Completa}
 
 Para documentos con bibliografía:
 
-\begin{minted}{bash}
+\begin{ptprintcode}{bash}
 pdflatex -shell-escape template.tex
 bibtex template
 pdflatex -shell-escape template.tex
 pdflatex -shell-escape template.tex
-\end{minted}
+\end{ptprintcode}
 
 \section{Consejos y Mejores Prácticas}
 
@@ -442,7 +442,7 @@ Para más información, consulte:
 \begin{itemize}
     \item README.md en el directorio de la clase
     \item Documentación de pt-commons
-    \item Repositorio: \url{https://github.com/ptoledo-teaching/pt-commons}
+    \item Repositorio: \url{https://github.com/ptoledo-teaching/pt-article}
 \end{itemize}
 
 % Bibliography (optional)

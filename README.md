@@ -1,10 +1,10 @@
 # PT Article Class
 
-**Version:** 0.1  
-**Date:** 2025/10/18  
+**Version:** 0.2<br>
+**Date:** 2026/08/28<br>
 **Author:** Pedro Toledo Correa  
 **License:** LaTeX Project Public License 1.3c or later  
-**Repository:** [GitHub - ptoledo-teaching/pt-commons](https://github.com/ptoledo-teaching/pt-commons)
+**Repository:** [GitHub - ptoledo-teaching/pt-article](https://github.com/ptoledo-teaching/pt-article)
 
 A professional LaTeX article document class built on top of `pt-commons`, designed for academic papers, technical reports, and professional articles. Features two-column layout, automatic title page generation, and enhanced formatting capabilities.
 
@@ -22,14 +22,15 @@ A professional LaTeX article document class built on top of `pt-commons`, design
 
 ## Installation
 
-Install both `pt-article.cls` and `pt-commons.sty` in your LaTeX project or texmf tree:
+Install `pt-article.cls` and all `pt-commons*.sty` files in your LaTeX project
+or texmf tree:
 
 ```bash
 # Local installation
 mkdir -p ~/texmf/tex/latex/pt-article
 mkdir -p ~/texmf/tex/latex/pt-commons
 cp pt-article.cls ~/texmf/tex/latex/pt-article/
-cp pt-commons.sty ~/texmf/tex/latex/pt-commons/
+cp pt-commons*.sty ~/texmf/tex/latex/pt-commons/
 texhash ~/texmf
 ```
 
@@ -77,6 +78,21 @@ All standard `article` class options are supported:
 \documentclass[nominted]{pt-article}  % Disable minted, use verbatim
 ```
 
+### Advanced Shared-Module Options
+
+The optional `pt-commons` modules can be disabled with `nolayout`, `nocontent`,
+or `noruntime`. `coreonly` (also available as `minimal`) disables all three;
+positive options can then restore selected modules:
+
+```latex
+\documentclass[coreonly]{pt-article}
+\documentclass[coreonly,content,nominted]{pt-article}
+```
+
+These are advanced integration options. Commands supplied by a disabled module
+are intentionally unavailable, while dependencies used directly by the class
+remain loaded.
+
 ## Document Metadata
 
 ### Title and Authors
@@ -104,14 +120,15 @@ The title page is automatically generated at the beginning of the document with:
 
 ```latex
 \version{1.0}              % Set document version
-\build{auto}               % Auto-increment build number
+\build{auto}               % Increment when a tracked source changes
+\buildsource{chapter.tex}  % Optionally track an included source
 \watermark{DRAFT}          % Add watermark
 ```
 
 The footer displays:
 - Page number
 - Version (if set): `v1.0`
-- Build number and date: `B5 - 2025/10/18`
+- Build number and date: `B5 - 2026/08/28`
 
 ### Academic Information
 
@@ -241,10 +258,10 @@ All features from `pt-commons` are available:
 
 ```latex
 % With minted (requires -shell-escape)
-\begin{minted}{python}
+\begin{ptprintcode}{python}
 def hello():
     print("Hello, World!")
-\end{minted}
+\end{ptprintcode}
 
 % For printing (black & white, framed)
 \begin{ptprintcode}{python}
@@ -402,8 +419,8 @@ This study has shown that...
 ## Compatibility
 
 - **LaTeX Engine:** PDFTeX, XeTeX, LuaTeX
-- **TeX Distribution:** TeX Live 2020 or later
-- **Required Packages:** Automatically loaded via `pt-commons`
+- **TeX Distribution:** TeX Live 2023 or later
+- **Required Packages:** Declared by the class and by the enabled `pt-commons` modules
 - **Optional:** Pygments (for minted support)
 
 ## Known Limitations
@@ -416,7 +433,9 @@ This study has shown that...
 
 ### Build Counter Not Updating
 
-Ensure write permissions in the document directory. The class creates `.buildcount` files.
+Ensure write permissions in the document directory. Automatic mode advances
+when a tracked source changes, not on an unchanged rerun. The main source is
+tracked by default; register included files with `\buildsource{...}`.
 
 ### Minted Not Working
 
@@ -447,10 +466,12 @@ Contributions are welcome! Please submit issues and pull requests to the reposit
 ## Support
 
 For questions and support:
-- **GitHub Issues:** [ptoledo-teaching/pt-commons](https://github.com/ptoledo-teaching/pt-commons/issues)
+- **GitHub Issues:** [ptoledo-teaching/pt-article](https://github.com/ptoledo-teaching/pt-article/issues)
 - **Email:** See package author information
 
 ---
 
 **Version History:**
+- v0.2 (2026-08-28): Explicit class dependencies, optional Commons modules,
+  and working `onecolumn` title rendering
 - v0.1 (2025-10-18): Initial release with pt-commons integration

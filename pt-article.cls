@@ -3,11 +3,11 @@
 %% Article document class for ptoledo-teaching
 %%
 %% Author: Pedro Toledo Correa
-%% Repo: https://github.com/ptoledo-teaching/pt-commons
+%% Repo: https://github.com/ptoledo-teaching/pt-article
 %% License: LaTeX Project Public License 1.3c or later
 %% Created: 2021-07-01
-%% Updated: 2025-10-18
-%% Version: v0.1
+%% Updated: 2026-08-28
+%% Version: v0.2
 %%
 %% -----------------------------------------------------------------
 %% This work may be distributed and/or modified under
@@ -17,8 +17,8 @@
 %% -----------------------------------------------------------------
 %%
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{pt-article}[2025/10/18 v0.1 PT Article Class]
+\NeedsTeXFormat{LaTeX2e}[2023-06-01]
+\ProvidesClass{pt-article}[2026/08/28 v0.2 PT Article Class]
 \makeatletter
 
 % Class handling %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,22 +29,55 @@
 \DeclareOption{portuguese}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
 \DeclareOption{french}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
 \DeclareOption{nominted}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{coreonly}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{minimal}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{full}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{layout}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{nolayout}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{content}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{nocontent}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{runtime}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+\DeclareOption{noruntime}{\PassOptionsToPackage{\CurrentOption}{pt-commons}}
+% PT Article is two-column by default, but an explicit onecolumn option must
+% survive the custom title routine. Later occurrences win.
+\newif\ifpt@articleonecolumn
+\pt@articleonecolumnfalse
+\DeclareOption{onecolumn}{%
+    \pt@articleonecolumntrue
+    \PassOptionsToClass{\CurrentOption}{article}%
+}
+\DeclareOption{twocolumn}{%
+    \pt@articleonecolumnfalse
+    \PassOptionsToClass{\CurrentOption}{article}%
+}
 % Pass all other options to base article class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 % Default options
 \ExecuteOptions{letterpaper}
-\ProcessOptions\relax
+\ProcessOptions*\relax
 % Load base class
 \LoadClass{article}
 % Load pt-commons package
 \RequirePackage{pt-commons}
 
+% Dependencies used directly by this class must not depend on optional Commons
+% modules being enabled.
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{geometry}
+\RequirePackage{graphicx}
+
 % Page and text formatting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Font sizing
-% microtype is already loaded by pt-commons; avoid duplicate loads
 % Fancy footer
 \pagestyle{fancy}
+\ifpt@loadlayout\else
+    % Keep a quiet, useful page style when PT's optional layout is disabled.
+    \fancyhf{}
+    \cfoot{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+\fi
 % Page size
 \geometry{
     left=42pt,
@@ -123,33 +156,41 @@
 % Elements %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Title
+\newcommand{\pt@articletitleblock}{%
+    \ifdefstring{\pt@logo}{}{}{%
+        \noindent\includegraphics[height=30pt]{\pt@logo}%
+        \vspace{14pt}%
+    }%
+    \begin{center}%
+        \vspace{6pt}%
+        {\Huge\pt@title}\\%
+        \ifdefined\pt@titlesub\vspace{6pt}{\LARGE\pt@titlesub}\\\fi%
+        \ifdefined\pt@titlesubsub%
+            \vspace{6pt}%
+            \ifdefined\pt@watermark%
+                \pt@watermark\ - %
+            \fi%
+            {\pt@titlesubsub}\\%
+        \fi%
+        \ifnum\value{authorindex}>0%
+            \vspace{12pt}%
+            \titleauthorsboxes%
+        \fi%
+    \end{center}%
+    \vspace{21pt}%
+}
 \renewcommand{\maketitle}{%
     \renewcommand{\thefootnote}{\alph{footnote}}%
-    \twocolumn[%
-        \begin{@twocolumnfalse}%
-            \ifdefstring{\pt@logo}{}{}{%
-                \noindent\includegraphics[height=30pt]{\pt@logo}%
-                \vspace{14pt}%
-            }%
-            \begin{center}%
-                \vspace{6pt}%
-                {\Huge\pt@title}\\%
-                \ifdefined\pt@titlesub\vspace{6pt}{\LARGE\pt@titlesub}\\\fi%
-                \ifdefined\pt@titlesubsub%
-                    \vspace{6pt}%
-                    \ifdefined\pt@watermark%
-                        \pt@watermark\ - %
-                    \fi%
-                    {\pt@titlesubsub}\\%
-                \fi%
-                \ifnum\value{authorindex}>0%
-                \vspace{12pt}%
-                \titleauthorsboxes%
-                \fi%
-            \end{center}%
-            \vspace{21pt}%
-        \end{@twocolumnfalse}%
-    ]%
+    \ifpt@articleonecolumn
+        \if@twocolumn\onecolumn\fi
+        \pt@articletitleblock
+    \else
+        \twocolumn[%
+            \begin{@twocolumnfalse}%
+                \pt@articletitleblock
+            \end{@twocolumnfalse}%
+        ]%
+    \fi
     \titleauthorsfootnotes%
     \renewcommand{\thefootnote}{\arabic{footnote}}%
 }
@@ -179,17 +220,21 @@
 
 % Directory tree styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setlength{\DTbaselineskip}{0.5cm}
-\renewcommand{\DTstyle}{\ttfamily\scriptsize}
+\ifpt@loadcontent
+    \setlength{\DTbaselineskip}{0.5cm}
+    \renewcommand{\DTstyle}{\ttfamily\scriptsize}
+\fi
 
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AfterEndPreamble{
     \maketitle
 }
-\AtBeginEnvironment{tblr}{
-    \footnotesize
-}
+\ifpt@loadcontent
+    \AtBeginEnvironment{tblr}{
+        \footnotesize
+    }
+\fi
 
 \makeatother
 

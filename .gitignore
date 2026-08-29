@@ -6,3 +6,11 @@
 *.lof
 *.lot
 *.toc
+*.buildcount
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+_minted*/
