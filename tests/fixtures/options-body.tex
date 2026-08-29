@@ -1,0 +1,15 @@
+% Shared body for module, language, font-size, and column option checks.
+\makeatletter
+\AtBeginDocument{%
+  \typeout{PT-TEST-MODULES=\ptiflayoutloaded{1}{0}\ptifcontentloaded{1}{0}\ptifruntimeloaded{1}{0}}%
+  \typeout{PT-TEST-FONTSIZE=\f@size}%
+  \typeout{PT-TEST-LANGUAGE=\languagename}%
+  \typeout{PT-TEST-COLUMNS=\if@twocolumn two\else one\fi}%
+}
+\makeatother
+
+\title{Options Contract}
+
+\begin{document}
+\ptinstruction{PTLANGUAGEMARKER}
+\end{document}

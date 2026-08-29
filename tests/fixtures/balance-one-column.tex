@@ -1,0 +1,16 @@
+% The public balance command remains harmless in explicit one-column mode.
+\documentclass[onecolumn,nominted]{pt-article}
+\title{One Column Balance Contract}
+\ptbalancecolumns
+
+\begin{document}
+\makeatletter
+\@ifpackageloaded{flushend}{%
+  \typeout{PT-TEST-FLUSHEND=loaded}%
+}{%
+  \typeout{PT-TEST-FLUSHEND=missing}%
+}
+\typeout{PT-TEST-COLUMNS=\if@twocolumn two\else one\fi}
+\makeatother
+One-column content.
+\end{document}

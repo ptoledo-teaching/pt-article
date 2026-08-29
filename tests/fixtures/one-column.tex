@@ -1,0 +1,10 @@
+% The explicit onecolumn option keeps both masthead and body single-column.
+\documentclass[onecolumn,nominted]{pt-article}
+\title{PTARTICLEONECOLUMNTITLE}
+
+\begin{document}
+\makeatletter
+\typeout{PT-TEST-COLUMNS=\if@twocolumn two\else one\fi}
+\makeatother
+\noindent PTARTICLEONECOLUMNCONTENT
+\end{document}

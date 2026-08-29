@@ -1,0 +1,10 @@
+% The article body is two-column by default and starts on physical page 1.
+\documentclass[nominted]{pt-article}
+\title{PTARTICLEDEFAULTTITLE}
+
+\begin{document}
+\makeatletter
+\typeout{PT-TEST-COLUMNS=\if@twocolumn two\else one\fi}
+\makeatother
+\noindent PTARTICLEDEFAULTCONTENT
+\end{document}

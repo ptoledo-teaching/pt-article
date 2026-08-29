@@ -1,0 +1,12 @@
+% Author rendering must not consume the ordinary document footnote counter.
+\documentclass[nominted]{pt-article}
+\title{Footnote Counter Contract}
+\addauthor{Primera}{Autora}{primera@example.com}{First Affiliation}
+\addauthor{Segundo}{Autor}{segundo@example.com}{Second Affiliation}
+
+\begin{document}
+Text with the first ordinary footnote\footnote{PTARTICLEFIRSTFOOTNOTE}.
+\makeatletter
+\typeout{PT-TEST-FOOTNOTE=\arabic{footnote}}
+\makeatother
+\end{document}

@@ -1,0 +1,8 @@
+% The automatic masthead is idempotent if a document calls \maketitle itself.
+\documentclass[nominted]{pt-article}
+\title{PTARTICLEDUPLICATETITLE}
+
+\begin{document}
+\maketitle
+\noindent PTARTICLEDUPLICATECONTENT
+\end{document}

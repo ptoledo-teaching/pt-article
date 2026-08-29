@@ -1,0 +1,25 @@
+% The display/float spacing distinction is identical in one-column mode.
+\documentclass[onecolumn,nominted]{pt-article}
+\title{One-column Table Spacing}
+
+\begin{document}
+
+\noindent PTSTANDALONEBEFORE\par
+\begin{tblr}{hlines,vlines,colspec={X}}
+    PTSTANDALONECELL
+\end{tblr}
+\noindent PTSTANDALONEAFTER\par
+
+\clearpage
+
+\noindent PTFLOATBEFORE\par
+\begin{table}[H]
+    \centering
+    \begin{tblr}{hlines,vlines,colspec={X}}
+        PTFLOATCELL
+    \end{tblr}
+    \caption{PTFLOATCAPTION}
+\end{table}
+\noindent PTFLOATAFTER\par
+
+\end{document}

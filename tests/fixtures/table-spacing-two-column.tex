@@ -1,0 +1,25 @@
+% Standalone tblr displays add space; tblr inside a float relies on the float.
+\documentclass[nominted]{pt-article}
+\title{Two-column Table Spacing}
+
+\begin{document}
+
+\noindent PTSTANDALONEBEFORE\par
+\begin{tblr}{hlines,vlines,colspec={X}}
+    PTSTANDALONECELL
+\end{tblr}
+\noindent PTSTANDALONEAFTER\par
+
+\clearpage
+
+\noindent PTFLOATBEFORE\par
+\begin{table}[H]
+    \centering
+    \begin{tblr}{hlines,vlines,colspec={X}}
+        PTFLOATCELL
+    \end{tblr}
+    \caption{PTFLOATCAPTION}
+\end{table}
+\noindent PTFLOATAFTER\par
+
+\end{document}

@@ -1,0 +1,23 @@
+% Enabling balancing must split real last-page lines evenly across both columns.
+\documentclass[nominted]{pt-article}
+\title{Column Balance Contract}
+\ptbalancecolumns
+
+\begin{document}
+\makeatletter
+\@ifpackageloaded{flushend}{%
+  \typeout{PT-TEST-FLUSHEND=loaded}%
+}{%
+  \typeout{PT-TEST-FLUSHEND=missing}%
+}
+\makeatother
+
+\newcount\ptbalanceline
+\ptbalanceline=0
+\loop
+  \advance\ptbalanceline by 1
+  PTBALANCELINE \the\ptbalanceline\quad
+  alpha beta gamma delta epsilon zeta.\par
+\ifnum\ptbalanceline<120
+\repeat
+\end{document}

@@ -1,0 +1,22 @@
+% With balancing disabled, real last-page lines remain in the left column.
+\documentclass[nominted]{pt-article}
+\title{Default Column Balance Contract}
+
+\begin{document}
+\makeatletter
+\@ifpackageloaded{flushend}{%
+  \typeout{PT-TEST-FLUSHEND=loaded}%
+}{%
+  \typeout{PT-TEST-FLUSHEND=missing}%
+}
+\makeatother
+
+\newcount\ptbalanceline
+\ptbalanceline=0
+\loop
+  \advance\ptbalanceline by 1
+  PTBALANCELINE \the\ptbalanceline\quad
+  alpha beta gamma delta epsilon zeta.\par
+\ifnum\ptbalanceline<120
+\repeat
+\end{document}

@@ -1,0 +1,18 @@
+% A full-width two-column float must also suppress standalone tblr spacing.
+\documentclass[nominted]{pt-article}
+\title{Starred Table Spacing}
+
+\begin{document}
+
+\begin{table*}[t]
+    \centering
+    \begin{tblr}{hlines,vlines,colspec={X}}
+        PTSTARFLOATCELL
+    \end{tblr}
+    \caption{PTSTARFLOATCAPTION}
+\end{table*}
+
+\noindent PTSTARBODY
+\clearpage
+
+\end{document}

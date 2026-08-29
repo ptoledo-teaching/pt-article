@@ -3,15 +3,19 @@
 %% Full-featured template demonstrating all capabilities
 %%
 %% Author: Pedro Toledo Correa
-%% Version: 0.2
-%% Date: 2026-08-28
+%% Version: 0.3
+%% Date: 2026-08-29
 %%
 
 \documentclass{pt-article}
 % Available options:
 % - Language: spanish (default), english, portuguese, french
 % - Code: nominted (disable minted, use verbatim)
-% - Standard article options: twocolumn, onecolumn, 10pt, 11pt, 12pt
+% - Columns: twocolumn (default), onecolumn
+% - Commons modules: coreonly/minimal/full and the namespaced controls
+%   ptlayout/ptnolayout, ptcontent/ptnocontent, ptruntime/ptnoruntime
+% - Standard article options: 10pt (default), 11pt, 12pt, oneside, twoside
+% - titlepage is not supported; use pt-report for a dedicated cover
 
 % Document metadata
 \title{Título del Artículo}
@@ -22,6 +26,7 @@
 \version{1.0}
 \build{auto}  % Advances when a tracked source changes; a number stays fixed
 % \watermark{BORRADOR}  % Uncomment to add watermark
+% \ptbalancecolumns     % Optional; final-page balancing is off by default
 
 % Authors (add as many as needed)
 \addauthor{Nombre}{Apellido}{correo@ejemplo.com}{Departamento, Universidad}
@@ -33,7 +38,7 @@
 % Academic/Class information (optional)
 \classcode{IWI-131}
 \classname{Programación}
-\classsemester{Primer Semestre 2025}
+\classsemester{Primer Semestre 2026}
 
 % Institution information (optional)
 \department{Departamento de Informática}
@@ -42,7 +47,7 @@
 
 \begin{document}
 
-% Title is automatically generated at the beginning
+% The full-width masthead is generated automatically once on physical page 1.
 
 % Abstract (optional)
 \begin{abstract}
@@ -70,7 +75,7 @@ de \LaTeX{} con las siguientes características:
 
 \begin{itemize}
     \item Diseño profesional de dos columnas
-    \item Generación automática de página de título
+    \item Generación automática de encabezado de artículo
     \item Gestión avanzada de autores con afiliaciones
     \item Control de versiones y numeración de compilaciones
     \item Formato personalizado de secciones
@@ -87,6 +92,7 @@ El documento puede configurarse con diferentes opciones:
     \item \textbf{Idiomas:} spanish, english, portuguese, french
     \item \textbf{Código:} nominted (desactiva minted)
     \item \textbf{Estándar:} twocolumn, onecolumn, 10pt, 11pt, 12pt
+    \item \textbf{Módulos:} ptlayout, ptcontent, ptruntime y variantes negativas
 \end{enumerate}
 
 \section{Formato de Texto}
@@ -186,9 +192,12 @@ Las listas numeradas también tienen formato consistente:
 
 La clase utiliza \inlinecode{tabularray} para tablas mejoradas:
 
-\begin{table}[h]
+\begin{table}[tbp]
 \centering
-\begin{tblr}{colspec={lcc}}
+\begin{tblr}{
+    width=\columnwidth,
+    colspec={X C{18mm} R{14mm}}
+}
     \tableheader
     Método & Precisión & Tiempo \\
     \hline
@@ -204,14 +213,14 @@ La clase utiliza \inlinecode{tabularray} para tablas mejoradas:
 
 Tabla con sub-encabezados y celdas personalizadas:
 
-\begin{table}[h]
+\begin{table}[tbp]
 \centering
 \begin{tblr}{
-    colspec={lccc},
-    width=\columnwidth
+    width=\columnwidth,
+    colspec={X C{14mm} C{14mm} C{14mm}}
 }
     \tableheader
-    \tablecellcenter Característica & Clase A & Clase B & Clase C \\
+    Característica & Clase A & Clase B & Clase C \\
     \hline
     \tablesubheader
     \tablecellbold Rendimiento & Alto & Medio & Bajo \\
@@ -368,11 +377,10 @@ derecho de la página.} se colocan automáticamente en el lado derecho.
 \section{Balance de Columnas}
 
 Por defecto, las columnas NO se balancean al final del documento (más seguro
-para figuras grandes). Para habilitar el balance de columnas:
+para figuras grandes). Para habilitar el balance de columnas, descomente
+\inlinecode{\textbackslash{}ptbalancecolumns} en el preámbulo.
 
-% \ptbalancecolumns  % Descomente para balancear columnas
-
-Para deshabilitarlo explícitamente:
+Para deshabilitarlo explícitamente en el preámbulo:
 
 % \ptnobalancecolumns
 
