@@ -203,7 +203,8 @@
         \vspace{12pt}%
         \begingroup
         \centering
-        \titleauthorstable\par
+        \renewcommand{\thefootnote}{\alph{footnote}}%
+        \titleauthorsboxes\par
         \endgroup
     }{}%
 }
@@ -239,6 +240,13 @@
             \vspace*{16pt}%
             \pt@article@titleblock
         \fi
+        % Insert affiliations after the full-width heading so they reach the
+        % normal footnote area. Explicit author indices leave the ordinary
+        % document footnote counter unchanged.
+        \begingroup
+        \renewcommand{\thefootnote}{\alph{footnote}}%
+        \titleauthorsfootnotes
+        \endgroup
     \fi
 }
 % Balance columns at the end of the document.

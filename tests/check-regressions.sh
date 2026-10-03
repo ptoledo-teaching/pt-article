@@ -362,6 +362,37 @@ assert_marker_in_right_column_bottom() {
         die "$test_marker is not at the bottom of the right column in $test_pdf"
 }
 
+assert_single_author_centered() {
+    local test_pdf=$1
+    local test_bbox
+
+    test_bbox=$(create_page_bbox "$test_pdf" 1)
+    awk -F'"' '
+        /<page width=/ { page_center = ($2 + 0) / 2 }
+        />Toledo</ || />Correa,</ || />Pedro</ {
+            if (!name_count || $2 + 0 < name_left) name_left = $2 + 0
+            if (!name_count || $6 + 0 > name_right) name_right = $6 + 0
+            name_count++
+        }
+        />pedro.toledo@usm.cl</ {
+            email_center = (($2 + 0) + ($6 + 0)) / 2
+            email_count++
+        }
+        END {
+            if (name_count != 3 || email_count != 1) exit 2
+            name_offset = (name_left + name_right) / 2 - page_center
+            email_offset = email_center - page_center
+            if (name_offset < -1 || name_offset > 1 ||
+                email_offset < -1 || email_offset > 1) {
+                printf "Author offsets from page center: name=%.3fpt email=%.3fpt\n", \
+                    name_offset, email_offset > "/dev/stderr"
+                exit 3
+            }
+        }
+    ' "$test_bbox" ||
+        die "the single author name and email are not centered in $test_pdf"
+}
+
 assert_last_page_balanced() {
     local test_pdf=$1
     local test_marker=$2
@@ -658,6 +689,12 @@ for test_engine in "${test_engines[@]}"; do
     assert_pdf_occurrences "$COMPILED_PDF" PTARTICLEDUPLICATETITLE 1
     assert_log_contains "$COMPILED_LOG" 'title masthead was already generated'
 
+    compile_success \
+        "$test_engine" author-centered.tex author-centered author-centered 1 \
+        "$test_fixture_dir"
+    assert_page_count "$COMPILED_PDF" 1
+    assert_single_author_centered "$COMPILED_PDF"
+
     for test_author_fixture in authors-long-two-column authors-long-one-column; do
         compile_success \
             "$test_engine" "$test_author_fixture.tex" "$test_author_fixture" \
@@ -673,6 +710,12 @@ for test_engine in "${test_engines[@]}"; do
         "$test_fixture_dir"
     assert_pdf_contains "$COMPILED_PDF" PTARTICLEFIRSTFOOTNOTE
     assert_log_contains "$COMPILED_LOG" 'PT-TEST-FOOTNOTE=1'
+    assert_pdf_contains "$COMPILED_PDF" 'a. PTARTICLEFIRSTAFFILIATION'
+    assert_pdf_contains "$COMPILED_PDF" 'b. PTARTICLESECONDAFFILIATION'
+    assert_marker_in_right_column_bottom \
+        "$COMPILED_PDF" 1 PTARTICLEFIRSTAFFILIATION
+    assert_marker_in_right_column_bottom \
+        "$COMPILED_PDF" 1 PTARTICLESECONDAFFILIATION
     assert_marker_in_right_column_bottom \
         "$COMPILED_PDF" 1 PTARTICLEFIRSTFOOTNOTE
 

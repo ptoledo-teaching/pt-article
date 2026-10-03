@@ -23,7 +23,8 @@ PT_TEST_MINTED=1 ./tests/check-regressions.sh pdflatex
 
 The suite writes all TeX outputs and caches to a temporary directory. It checks
 the automatic masthead, missing and empty titles, one- and two-column contracts,
-two-sided pagination, long authors, ordinary footnote numbering and physical
+two-sided pagination, centered author names/emails, long authors, alphabetic
+affiliation footnotes, ordinary footnote numbering and physical
 right-column placement, geometric last-page balancing,
 standalone-versus-float table spacing, Commons module composition, languages,
 font sizes, and the public `L`/`C`/`R`/`X` table-column grammar.

@@ -17,7 +17,7 @@ physical page 1.
 - Symmetric 42pt margins and 21pt column separation
 - Required title rendered automatically once at the start of the document
 - Optional subtitle, tertiary title, logo, watermark, and multiple authors
-- Width-bounded author table that wraps long emails and affiliations
+- Centered author blocks with wrapping names/emails and affiliation footnotes
 - Footnotes collected in the right column in two-column mode
 - Optional last-page column balancing, disabled by default
 - Shared PT typography, metadata, tables, code blocks, figures, and runtime
@@ -170,10 +170,12 @@ Add any number of authors as first name, last name, email, and affiliation:
   {Research Laboratory}
 ```
 
-The masthead centers the Commons `\titleauthorstable` renderer. It keeps its
-natural width when the author data fits and expands to a full-width wrapping
-table only when needed. Empty values do not produce placeholder rows or author
-footnotes.
+The masthead uses the Commons `\titleauthorsboxes` renderer: each author's
+name and optional email form a centered block, with multiple authors side by
+side when they fit. Long names and emails wrap within the available width;
+blocks move to a new line when necessary. Non-empty affiliations appear as
+alphabetically marked footnotes. Empty values do not produce placeholder rows
+or author footnotes.
 
 Other shared metadata setters remain available for footer, watermark, and
 document content:
@@ -272,8 +274,8 @@ instruction, caption, link, color, and metadata APIs.
 
 In the default two-column layout, `ftnright` collects ordinary footnotes at the
 bottom of the right column. In explicit one-column mode, standard article
-footnote placement is used. Author details in the masthead do not consume the
-document footnote counter.
+footnote placement is used. Author affiliations use alphabetic marks and do
+not consume the ordinary document footnote counter, which starts at 1.
 
 ## Column balancing
 
